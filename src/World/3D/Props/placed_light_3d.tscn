@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlrwk0vlum3fa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r63q0"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_atve7"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="PlacedLight3D" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_r63q0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_atve7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+light_color = Color(1, 0.894533, 0.556073, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+light_color = Color(1, 0.894533, 0.556073, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+light_color = Color(1, 0.894533, 0.556073, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+light_color = Color(1, 0.894533, 0.556073, 1)
+light_energy = 0.5
+shadow_enabled = true

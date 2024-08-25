@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqu528b4wv3i"]
+
+[ext_resource type="Script" path="res://World/2D/Props/placed_light.gd" id="1_2qwl8"]
+[ext_resource type="Texture2D" uid="uid://swq3faty76gp" path="res://icon.svg" id="2_scnoy"]
+
+[sub_resource type="Gradient" id="Gradient_ua7eb"]
+offsets = PackedFloat32Array(0, 0.571429)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kkne2"]
+gradient = SubResource("Gradient_ua7eb")
+width = 2048
+height = 2048
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnhdo"]
+size = Vector2(32, 32)
+
+[node name="PlacedLight" type="Node2D"]
+script = ExtResource("1_2qwl8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.670588, 0.172549, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_kkne2")
+
+[node name="Icon" type="Sprite2D" parent="."]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_scnoy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xnhdo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

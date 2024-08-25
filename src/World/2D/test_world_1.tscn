@@ -1,0 +1,445 @@
+[gd_scene load_steps=41 format=3 uid="uid://b7umyh4403ytu"]
+
+[ext_resource type="Texture2D" uid="uid://chapqvhupmt1v" path="res://World/2D/map_test.png" id="1_p257q"]
+[ext_resource type="Texture2D" uid="uid://swq3faty76gp" path="res://icon.svg" id="2_jk4xp"]
+[ext_resource type="Script" path="res://Player/player.gd" id="3_gvqcc"]
+[ext_resource type="Texture2D" uid="uid://dxabxd1kg3u3h" path="res://Player/light1.png" id="4_grcgy"]
+[ext_resource type="Script" path="res://Monsters/monster.gd" id="5_bplax"]
+[ext_resource type="Script" path="res://World/2D/Props/placed_light.gd" id="6_wd3my"]
+[ext_resource type="Script" path="res://World/2D/Props/ladder.gd" id="7_gv3lx"]
+
+[sub_resource type="Environment" id="Environment_fj7xg"]
+background_mode = 3
+glow_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vsa2"]
+size = Vector2(3432, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hme6g"]
+size = Vector2(2707, 143.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk8nf"]
+size = Vector2(535, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j88va"]
+size = Vector2(1394.5, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f0t7"]
+size = Vector2(2461.25, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5rhf"]
+size = Vector2(2297.62, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5gss"]
+size = Vector2(3446.81, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwf0u"]
+size = Vector2(389.405, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok26s"]
+size = Vector2(4090.7, 591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76nyc"]
+size = Vector2(436, 3034.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74o6m"]
+size = Vector2(413, 2301.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a06vk"]
+polygon = PackedVector2Array(-873, 363, 3004, 367, 3008, 3402, -1980, 3427, -1974, 2825, 2563, 2825, 2558, 2373, -887, 2390, -881, 2175, 2553, 2186, 2558, 1304, 100, 1315, 104, 1139, 2564, 1157, 2558, 953, 1961, 946, 1961, 768, 2558, 772, 2553, 489, -870, 506)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mybqv"]
+polygon = PackedVector2Array(-1549, 2819, -1976, 2826, -1976, 1123, -156, 1138, -160, 1312, -1522, 1308, -1519, 1565, 765, 1561, 762, 1784, -1545, 1780, -1538, 2169, -1152, 2173, -1149, 2399, -1538, 2399)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_22kfj"]
+polygon = PackedVector2Array(-1003, 786, 1708, 790, 1708, 928, -1000, 931)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nnpw"]
+size = Vector2(3458.5, 70)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o4ukr"]
+polygon = PackedVector2Array(-2473, 686, 2772, 701, 2766, 1503, -2267, 1584)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a2es"]
+size = Vector2(2295, 70)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_506aq"]
+polygon = PackedVector2Array(-524, 308, 1772, 308, 1772, 378, -524, 377)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k68mt"]
+size = Vector2(511, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h8fjo"]
+polygon = PackedVector2Array(-255, -16, 256, -16, 256, 16, -256, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unnlh"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_ftpal"]
+offsets = PackedFloat32Array(0, 0.649351)
+colors = PackedColorArray(0.792208, 0.792208, 0.792208, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_opyhp"]
+gradient = SubResource("Gradient_ftpal")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xuf6d"]
+polygon = PackedVector2Array(-1, 8, -147, -209, -298, -35, -133, 256, 110, 270, 305, 94, 324, -100, 151, -211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7k2d"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehvvn"]
+size = Vector2(97, 97)
+
+[sub_resource type="Gradient" id="Gradient_ua7eb"]
+offsets = PackedFloat32Array(0, 0.571429)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kkne2"]
+gradient = SubResource("Gradient_ua7eb")
+width = 2048
+height = 2048
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnhdo"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6snea"]
+size = Vector2(40, 151)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npwvd"]
+size = Vector2(40, 414)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v05ut"]
+size = Vector2(40, 623)
+
+[node name="TestWorld1" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+rotation = -0.000922465
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4587.0
+offset_top = -3988.0
+offset_right = 5413.0
+offset_bottom = 6012.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.519424, 0.752435, 0.807186, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+rotation = -0.523599
+color = Color(0.788235, 1, 1, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fj7xg")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="MapTest" type="Sprite2D" parent="StaticBody2D4"]
+texture_filter = 1
+position = Vector2(512, 2306)
+scale = Vector2(4, 4)
+texture = ExtResource("1_p257q")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_left = 2549.0
+offset_top = 368.0
+offset_right = 3012.0
+offset_bottom = 3410.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D4"]
+offset_left = -1977.0
+offset_top = 1127.0
+offset_right = -1514.0
+offset_bottom = 3428.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(842, 444.5)
+shape = SubResource("RectangleShape2D_1vsa2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(355.5, 861.75)
+shape = SubResource("RectangleShape2D_hme6g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(2231.5, 859)
+shape = SubResource("RectangleShape2D_kk8nf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-842.25, 1231)
+shape = SubResource("RectangleShape2D_j88va")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1325.38, 1232)
+shape = SubResource("RectangleShape2D_4f0t7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-387.812, 1672)
+shape = SubResource("RectangleShape2D_a5rhf")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(843.595, 2287)
+shape = SubResource("RectangleShape2D_a5gss")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-1345.7, 2291)
+shape = SubResource("RectangleShape2D_rwf0u")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(513.649, 3117.5)
+shape = SubResource("RectangleShape2D_ok26s")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(2794, 1891.25)
+shape = SubResource("RectangleShape2D_76nyc")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-1758.5, 2275.75)
+shape = SubResource("RectangleShape2D_74o6m")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D4"]
+occluder = SubResource("OccluderPolygon2D_a06vk")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="StaticBody2D4"]
+occluder = SubResource("OccluderPolygon2D_mybqv")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="StaticBody2D4"]
+occluder = SubResource("OccluderPolygon2D_22kfj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(143.25, 731)
+shape = SubResource("RectangleShape2D_0nnpw")
+disabled = true
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(6.49982, 1152.5)
+scale = Vector2(37.3672, 7.11719)
+texture = ExtResource("2_jk4xp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D2"]
+occluder = SubResource("OccluderPolygon2D_o4ukr")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(624, 343)
+shape = SubResource("RectangleShape2D_2a2es")
+disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D3"]
+occluder = SubResource("OccluderPolygon2D_506aq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(622, 682)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_k68mt")
+disabled = true
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(4, 0.25)
+texture = ExtResource("2_jk4xp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D"]
+occluder = SubResource("OccluderPolygon2D_h8fjo")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(591, 317)
+script = ExtResource("3_gvqcc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jk4xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_unnlh")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Head" type="Node2D" parent="Player"]
+position = Vector2(0, -45)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player/Head"]
+color = Color(0.94, 0.72944, 0.3384, 1)
+energy = 0.1
+shadow_enabled = true
+texture = ExtResource("4_grcgy")
+offset = Vector2(461.285, -29.035)
+texture_scale = 0.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="Player/Head"]
+color = Color(0.941176, 0.729412, 0.337255, 1)
+energy = 0.4
+texture = SubResource("GradientTexture2D_opyhp")
+
+[node name="Icon" type="Sprite2D" parent="Player/Head"]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_jk4xp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player/Head"]
+visible = false
+rotation = 1.5708
+occluder = SubResource("OccluderPolygon2D_xuf6d")
+
+[node name="Monster" type="CharacterBody2D" parent="." groups=["enemy", "shootable"]]
+position = Vector2(-861, 610)
+script = ExtResource("5_bplax")
+
+[node name="Sprite2D" type="Sprite2D" parent="Monster"]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_jk4xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster"]
+shape = SubResource("RectangleShape2D_k7k2d")
+
+[node name="Area2D" type="Area2D" parent="Monster"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/Area2D"]
+shape = SubResource("RectangleShape2D_ehvvn")
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="PlacedLight" type="Node2D" parent="Lights"]
+position = Vector2(1572, 729)
+script = ExtResource("6_wd3my")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights/PlacedLight"]
+color = Color(1, 0.670588, 0.172549, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_kkne2")
+
+[node name="Icon" type="Sprite2D" parent="Lights/PlacedLight"]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_jk4xp")
+
+[node name="Area2D" type="Area2D" parent="Lights/PlacedLight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lights/PlacedLight/Area2D"]
+shape = SubResource("RectangleShape2D_xnhdo")
+
+[node name="Props" type="Node" parent="."]
+
+[node name="Ladder" type="Area2D" parent="Props"]
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder"]
+offset_right = 40.0
+offset_bottom = 151.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder"]
+position = Vector2(20, 75.5)
+shape = SubResource("RectangleShape2D_6snea")
+
+[node name="Ladder2" type="Area2D" parent="Props"]
+position = Vector2(-954, 504)
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder2"]
+offset_top = -146.0
+offset_right = 40.0
+offset_bottom = 270.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder2"]
+position = Vector2(20, 63)
+shape = SubResource("RectangleShape2D_npwvd")
+
+[node name="Ladder3" type="Area2D" parent="Props"]
+position = Vector2(1738, 904)
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder3"]
+offset_top = -146.0
+offset_right = 40.0
+offset_bottom = 270.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder3"]
+position = Vector2(20, 63)
+shape = SubResource("RectangleShape2D_npwvd")
+
+[node name="Ladder4" type="Area2D" parent="Props"]
+position = Vector2(-85, 1290)
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder4"]
+offset_top = -146.0
+offset_right = 40.0
+offset_bottom = 270.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder4"]
+position = Vector2(20, 63)
+shape = SubResource("RectangleShape2D_npwvd")
+
+[node name="Ladder5" type="Area2D" parent="Props"]
+position = Vector2(-1041, 2484)
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder5"]
+offset_top = -360.0
+offset_right = 40.0
+offset_bottom = 270.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder5"]
+position = Vector2(20, -41.5)
+shape = SubResource("RectangleShape2D_v05ut")
+
+[node name="Ladder6" type="Area2D" parent="Props"]
+position = Vector2(820, 1901)
+script = ExtResource("7_gv3lx")
+
+[node name="ColorRect" type="ColorRect" parent="Props/Ladder6"]
+offset_top = -360.0
+offset_right = 40.0
+offset_bottom = 270.0
+color = Color(0.67, 0.33902, 0.1474, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/Ladder6"]
+position = Vector2(20, -41.5)
+shape = SubResource("RectangleShape2D_v05ut")
+
+[connection signal="body_entered" from="Monster/Area2D" to="Monster" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Lights/PlacedLight/Area2D" to="Lights/PlacedLight" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Props/Ladder" to="Props/Ladder" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder" to="Props/Ladder" method="_on_body_exited"]
+[connection signal="body_entered" from="Props/Ladder2" to="Props/Ladder2" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder2" to="Props/Ladder2" method="_on_body_exited"]
+[connection signal="body_entered" from="Props/Ladder3" to="Props/Ladder3" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder3" to="Props/Ladder3" method="_on_body_exited"]
+[connection signal="body_entered" from="Props/Ladder4" to="Props/Ladder4" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder4" to="Props/Ladder4" method="_on_body_exited"]
+[connection signal="body_entered" from="Props/Ladder5" to="Props/Ladder5" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder5" to="Props/Ladder5" method="_on_body_exited"]
+[connection signal="body_entered" from="Props/Ladder6" to="Props/Ladder6" method="_on_body_entered"]
+[connection signal="body_exited" from="Props/Ladder6" to="Props/Ladder6" method="_on_body_exited"]
