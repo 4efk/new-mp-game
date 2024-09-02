@@ -1,8 +1,13 @@
 extends VehicleBody3D
 
-@export var speed = 4000
+@export var speed = 7000
 @export var breaking_force = 150
 @export var steering_speed: float = 7.5
+
+@onready var hud_speed_kph: Label = $HUD/SpeedKPH
+
+func _process(delta: float) -> void:
+	hud_speed_kph.text = str(linear_velocity.length() * 3.6)
 
 func _physics_process(delta: float) -> void:
 	engine_force = Input.get_axis("forward", "backward") * speed
@@ -16,7 +21,8 @@ func _physics_process(delta: float) -> void:
 	
 	brake = int(Input.is_action_pressed("brake")) * breaking_force
 	
-	print($WheelFL.get_rpm())
+	#print($WheelFL.get_rpm())
+	print($WheelRL.get_skidinfo())
 	
 	#$WheelFL.brake = int(Input.is_action_pressed("brake")) * breaking_force
 	#$WheelFR.brake = int(Input.is_action_pressed("brake")) * breaking_force
