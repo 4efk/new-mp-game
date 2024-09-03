@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmyqgyq20hm26"]
+[gd_scene load_steps=8 format=3 uid="uid://bmyqgyq20hm26"]
 
 [ext_resource type="Texture2D" uid="uid://cth0e770c3t23" path="res://Textures/PNG/Green/texture_01.png" id="1_vnlyp"]
 [ext_resource type="Script" path="res://Vehicles/Car0/car_0.gd" id="2_qgor5"]
+[ext_resource type="PackedScene" uid="uid://dptr1rs36otmo" path="res://World/road_test_1.glb" id="3_d0ikv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s82c1"]
 albedo_texture = ExtResource("1_vnlyp")
@@ -64,7 +65,7 @@ shape = SubResource("BoxShape3D_2j05r")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.25, 1)
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
-wheel_friction_slip = 1.0
+wheel_friction_slip = 9.0
 suspension_travel = 0.5
 suspension_stiffness = 100.0
 suspension_max_force = 300000.0
@@ -79,7 +80,7 @@ mesh = SubResource("CylinderMesh_8cehj")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.25, -1)
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
-wheel_friction_slip = 1.0
+wheel_friction_slip = 9.0
 suspension_travel = 0.5
 suspension_stiffness = 100.0
 suspension_max_force = 300000.0
@@ -97,7 +98,6 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
-wheel_friction_slip = 1.0
 suspension_travel = 0.5
 suspension_stiffness = 100.0
 suspension_max_force = 300000.0
@@ -115,7 +115,6 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
-wheel_friction_slip = 1.0
 suspension_travel = 0.5
 suspension_stiffness = 100.0
 suspension_max_force = 300000.0
@@ -139,3 +138,6 @@ offset_top = 50.0
 offset_right = 93.0
 offset_bottom = 73.0
 text = "0 kph"
+
+[node name="road_test_1" parent="." instance=ExtResource("3_d0ikv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18.3723, 0.460333, 0)
