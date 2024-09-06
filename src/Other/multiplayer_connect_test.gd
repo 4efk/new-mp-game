@@ -23,7 +23,6 @@ func _on_peer_connected(id):
 func _on_connected_ok():
 	console_output.text += 'connected to server\n'
 
-
 func _ready():
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	#multiplayer.peer_disconnected.connect(_on_player_disconnected)
