@@ -37,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(1, 0).rotated(rotation) * speed * move_direction
 	
 	move_and_slide()
+	
+	# the animation
 
 func _on_move_timer_timeout() -> void:
 	move_direction = 0

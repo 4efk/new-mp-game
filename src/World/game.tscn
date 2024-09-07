@@ -5,4 +5,18 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_8juat")
 
+[node name="Spawnpoints" type="Node" parent="."]
+
+[node name="Spawnpoint1" type="Marker2D" parent="Spawnpoints"]
+position = Vector2(200, 200)
+
+[node name="Spawnpoint2" type="Marker2D" parent="Spawnpoints"]
+position = Vector2(1080, 200)
+
+[node name="Spawnpoint3" type="Marker2D" parent="Spawnpoints"]
+position = Vector2(200, 520)
+
+[node name="Spawnpoint4" type="Marker2D" parent="Spawnpoints"]
+position = Vector2(1080, 520)
+
 [node name="Players" type="Node" parent="."]

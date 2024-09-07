@@ -24,6 +24,8 @@ func create_server(port):
 	broadcaster.bind(ADVERTISE_BROADCAST_PORT)
 	broadcast_timer.start()
 	
+	connected_players[1] = GlobalScript.self_player_info
+	
 	print('created server')
 	
 func create_client(ip, port):
@@ -32,21 +34,30 @@ func create_client(ip, port):
 	multiplayer.multiplayer_peer = peer
 
 func _on_connected_ok():
+	send_own_client_info_to_server()
+	get_node('/root/MainMenu').connected_to_server()
+	
 	print("connected to server")
 func _on_connected_fail():
 	print("connectection failed")
 func _on_server_disconnected():
 	print("disconnected from server")
 func _on_peer_connected(id):
+	Networking.connected_players[id] = GlobalScript.DEFAULT_PLAYER_INFO
+	
 	print(str(id) + " connected")
 func _on_peer_disconnected(id):
+	
 	print(str(id) + " disconnected")
 
 func advertise_server():
 	broadcaster.put_packet("hi, can you hear me?".to_ascii_buffer())
 
 func close_server():
-	pass
+	multiplayer.multiplayer_peer = null
+	connected_players = {}
+	broadcast_timer.stop()
+	broadcaster = null
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -63,6 +74,34 @@ func _process(delta: float) -> void:
 	var packet = listener.get_packet().get_string_from_ascii()
 	if packet:
 		pass #print(packet)
-
+	
+	#print(multiplayer.get_unique_id(), connected_players, '\n')
+	
 func _on_broadcast_timer_timeout() -> void:
 	advertise_server()
+
+# RPCs and despair
+func send_own_client_info_to_server():
+	rpc_id(1, 'receive_info_from_client', GlobalScript.self_player_info)
+func send_all_info_to_clients():
+	rpc('receive_all_info_from_server', Networking.connected_players)
+func send_all_info_to_client(id):
+	rpc_id(id, 'receive_all_info_from_server', Networking.connected_players)
+func change_own_ready_state():
+	pass
+func start_clients_game():
+	rpc('start_game')
+
+@rpc("any_peer", "reliable")
+func receive_info_from_client(info):
+	connected_players[multiplayer.get_remote_sender_id()] = info
+	send_all_info_to_clients()
+@rpc("authority", "reliable")
+func receive_all_info_from_server(info):
+	Networking.connected_players = info
+@rpc('any_peer', 'reliable')
+func receive_client_ready_change():
+	pass
+@rpc("authority", "reliable")
+func start_game():
+	get_tree().change_scene_to_file("res://World/game.tscn")

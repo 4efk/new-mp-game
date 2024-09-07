@@ -21,26 +21,39 @@ offset_left = -67.0
 offset_top = -50.0
 offset_right = 67.0
 offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("3_pnuyn")
 theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
+text = "~-~-~-~"
 
 [node name="Label2" type="Label" parent="."]
 offset_left = -67.0
 offset_top = 5.0
 offset_right = 67.0
 offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("3_pnuyn")
 theme_override_font_sizes/font_size = 32
-text = "~~~~~~~"
+text = "~-~-~-~"
 
 [node name="Label3" type="Label" parent="."]
 offset_left = -21.0
-offset_top = -25.0
+offset_top = -23.0
 offset_right = 113.0
-offset_bottom = 20.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("3_pnuyn")
 theme_override_font_sizes/font_size = 32
 text = "#######"
+
+[node name="CustomLetter" type="Label" parent="."]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("3_pnuyn")
+theme_override_font_sizes/font_size = 32
+text = "H"
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
