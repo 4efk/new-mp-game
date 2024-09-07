@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://vbjdmoopqucn"]
+
+[ext_resource type="Script" path="res://Networking/networking.gd" id="1_6uch2"]
+
+[node name="Networking" type="Node"]
+process_mode = 3
+script = ExtResource("1_6uch2")
+
+[node name="BroadcastTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="BroadcastTimer" to="." method="_on_broadcast_timer_timeout"]

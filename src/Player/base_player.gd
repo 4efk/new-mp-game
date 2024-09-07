@@ -20,15 +20,15 @@ func move_rotate(dir):
 func move_shoot():
 	pass
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("forward"):
-		move_move(1)
-	if Input.is_action_just_pressed("backward"):
-		move_move(-1)
-	if Input.is_action_just_pressed("left"):
-		move_rotate(-1)
-	if Input.is_action_just_pressed("right"):
-		move_rotate(1)
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("forward"):
+		#move_move(1)
+	#if Input.is_action_just_pressed("backward"):
+		#move_move(-1)
+	#if Input.is_action_just_pressed("left"):
+		#move_rotate(-1)
+	#if Input.is_action_just_pressed("right"):
+		#move_rotate(1)
 
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():

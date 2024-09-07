@@ -1,35 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://do6vtk84aidnw"]
+[gd_scene load_steps=4 format=3 uid="uid://do6vtk84aidnw"]
 
-[ext_resource type="Script" path="res://Player/base_player.gd" id="1_55rvd"]
 [ext_resource type="Texture2D" uid="uid://swq3faty76gp" path="res://icon.svg" id="1_b71bh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
-size = Vector2(128, 64)
+[ext_resource type="PackedScene" uid="uid://b2a4q5ysp3vgj" path="res://Player/player.tscn" id="1_swfj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kol21"]
 size = Vector2(128, 254)
 
 [node name="TestWorld1" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(240, 175)
-motion_mode = 1
-script = ExtResource("1_55rvd")
-
-[node name="MoveTimer" type="Timer" parent="Player"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(1, 0.5)
-texture = ExtResource("1_b71bh")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player"]
-position = Vector2(50, 0)
-scale = Vector2(1.5, 0.1)
-texture = ExtResource("1_b71bh")
+[node name="Player" parent="." instance=ExtResource("1_swfj8")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(666, 188)
@@ -40,5 +19,3 @@ shape = SubResource("RectangleShape2D_kol21")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 scale = Vector2(1, 2)
 texture = ExtResource("1_b71bh")
-
-[connection signal="timeout" from="Player/MoveTimer" to="Player" method="_on_move_timer_timeout"]

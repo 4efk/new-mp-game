@@ -1,0 +1,199 @@
+[gd_scene load_steps=3 format=3 uid="uid://2unws7tipg78"]
+
+[ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="1_16r03"]
+[ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_nmt8t"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nmt8t")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = 2.0
+offset_right = 288.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 64
+text = "game that games"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="MainMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "test "
+horizontal_alignment = 1
+
+[node name="Title3" type="Label" parent="MainMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "test sdfasd"
+horizontal_alignment = 1
+
+[node name="Title4" type="Label" parent="MainMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "test asdasd"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "play"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "quit"
+flat = true
+
+[node name="HostJoinBrowser" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HostJoinBrowser"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HostJoinBrowser/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 48
+text = "servers"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Server1" type="Button" parent="HostJoinBrowser/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 1"
+flat = true
+
+[node name="Server2" type="Button" parent="HostJoinBrowser/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 2"
+flat = true
+
+[node name="Server3" type="Button" parent="HostJoinBrowser/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "join"
+flat = true
+
+[node name="DirectJoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "dirjoin"
+flat = true
+
+[node name="HostButton" type="Button" parent="HostJoinBrowser/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "host"
+flat = true
+
+[node name="BackButton" type="Button" parent="HostJoinBrowser/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "back"
+flat = true
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/HBoxContainer/DirectJoinButton" to="." method="_on_direct_join_button_pressed"]
+[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

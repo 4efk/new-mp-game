@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="New Multiplayer Game"
-run/main_scene="res://World/test_world_1.tscn"
+run/main_scene="res://Menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
 
-Networking="*res://Networking/networking.gd"
+Networking="*res://Networking/networking.tscn"
 
 [display]
 
@@ -56,3 +56,4 @@ backward={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.176471, 0.164706, 0.180392, 1)
