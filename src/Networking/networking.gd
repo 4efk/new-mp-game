@@ -24,6 +24,7 @@ func create_server(port):
 	broadcaster.bind(ADVERTISE_BROADCAST_PORT)
 	broadcast_timer.start()
 	
+	# as the dictionary is not duplicated, but directly added there, changes to that dict alone also reflect on the connected_players dict
 	connected_players[1] = GlobalScript.self_player_info
 	
 	print('created server')
@@ -87,10 +88,16 @@ func send_all_info_to_clients():
 	rpc('receive_all_info_from_server', Networking.connected_players)
 func send_all_info_to_client(id):
 	rpc_id(id, 'receive_all_info_from_server', Networking.connected_players)
-func change_own_ready_state():
-	pass
+func change_own_ready_state(state):
+	rpc_id(1, 'receive_client_ready_change', state)
 func start_clients_game():
 	rpc('start_game')
+func make_own_move(move):
+	rpc_id(1, 'receive_client_move', move)
+func act_all_clients_moves():
+	rpc('act_all_moves')
+func finish_clients_moves():
+	rpc('finish_all_moves')
 
 @rpc("any_peer", "reliable")
 func receive_info_from_client(info):
@@ -100,8 +107,19 @@ func receive_info_from_client(info):
 func receive_all_info_from_server(info):
 	Networking.connected_players = info
 @rpc('any_peer', 'reliable')
-func receive_client_ready_change():
-	pass
+func receive_client_ready_change(state):
+	Networking.connected_players[multiplayer.get_remote_sender_id()]['ready'] = state
+	Networking.send_all_info_to_clients()
 @rpc("authority", "reliable")
 func start_game():
 	get_tree().change_scene_to_file("res://World/game.tscn")
+@rpc("any_peer", 'reliable')
+func receive_client_move(move):
+	Networking.connected_players[multiplayer.get_remote_sender_id()]['move'] = move
+	Networking.send_all_info_to_clients()
+@rpc("authority", "reliable")
+func act_all_moves():
+	get_node('/root/Game').make_all_moves()
+@rpc("authority", "reliable")
+func finish_all_moves():
+	get_node('/root/Game').moves_done()

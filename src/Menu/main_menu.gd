@@ -33,11 +33,10 @@ func _process(delta: float) -> void:
 		if !Networking.connected_players[player]['ready']:
 			start_timer = 5
 			start_countdown_timer.stop()
-			print(1)
 		else:
 			ready_players.append(player)
 	
-	if len(Networking.connected_players) == len(ready_players) and start_countdown_timer.is_stopped() and start_timer > 0:
+	if len(Networking.connected_players) == len(ready_players) and start_countdown_timer.is_stopped() and start_timer > 0 and lobby.visible:
 		start_countdown_timer.start()
 	
 	start_countdown.get_parent().visible = !start_countdown_timer.is_stopped()
@@ -51,6 +50,10 @@ func connected_to_server():
 func _on_play_button_pressed() -> void:
 	main_menu.hide()
 	host_join_browser.show()
+func _on_customize_button_pressed() -> void:
+	pass # Replace with function body.
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
@@ -76,7 +79,7 @@ func _on_ready_button_toggled(toggled_on: bool) -> void:
 	if multiplayer.get_unique_id() == 1:
 		Networking.send_all_info_to_clients()
 	else:
-		Networking.send_own_client_info_to_server()
+		Networking.change_own_ready_state(GlobalScript.self_player_info['ready'])
 	can_change_ready = false
 	ready_cooldown_timer.start()
 func _on_leave_button_pressed() -> void:
@@ -91,5 +94,4 @@ func _on_start_countdown_timer_timeout() -> void:
 		if multiplayer.is_server():
 			Networking.start_clients_game()
 			get_tree().change_scene_to_file("res://World/game.tscn")
-		print('game started')
 		start_countdown_timer.stop()
