@@ -9,15 +9,6 @@ var network_id
 @onready var move_timer: Timer = $MoveTimer
 @onready var barrel_end: Marker2D = $BarrelEnd
 
-#func move_move(dir):
-	#move_direction = dir
-	#move_timer.start()
-	
-#func move_rotate(dir):
-	#var tween = get_tree().create_tween()
-	#tween.tween_property(self, 'rotation', rotation + PI/8 * dir, 1)
-	#move_timer.start()
-	
 func move_forward():
 	move_direction = 1
 	move_timer.start()
@@ -38,15 +29,8 @@ func move_shoot():
 	bullet_instance.global_position = barrel_end.global_position
 	get_parent().get_parent().get_node('Bullets').add_child(bullet_instance)
 
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("forward"):
-		#move_shoot()
-	#if Input.is_action_just_pressed("backward"):
-		#move_move(-1)
-	#if Input.is_action_just_pressed("left"):
-		#move_rotate(-1)
-	#if Input.is_action_just_pressed("right"):
-		#move_rotate(1)
+func hit():
+	print('hit')
 
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():
