@@ -15,6 +15,11 @@ extends Control
 var can_change_ready = true
 var start_timer = 5
 
+func _ready() -> void:
+	if multiplayer.multiplayer_peer is ENetMultiplayerPeer:
+		main_menu.hide()
+		lobby.show()
+
 func _process(delta: float) -> void:
 	for node in players_grid.get_children():
 		if str(node.name).begins_with('Player'):

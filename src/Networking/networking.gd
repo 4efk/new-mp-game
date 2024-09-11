@@ -98,6 +98,8 @@ func act_all_clients_moves():
 	rpc('act_all_moves')
 func finish_clients_moves():
 	rpc('finish_all_moves')
+func finish_clients_game():
+	rpc('finish_game')
 
 @rpc("any_peer", "reliable")
 func receive_info_from_client(info):
@@ -123,3 +125,6 @@ func act_all_moves():
 @rpc("authority", "reliable")
 func finish_all_moves():
 	get_node('/root/Game').moves_done()
+@rpc("authority", "reliable")
+func finish_game():
+	get_node('/root/Game').game_over()

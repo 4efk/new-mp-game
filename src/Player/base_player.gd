@@ -30,7 +30,11 @@ func move_shoot():
 	get_parent().get_parent().get_node('Bullets').add_child(bullet_instance)
 
 func hit():
-	print('hit')
+	Networking.connected_players[int(str(name))]['alive'] = false
+	if multiplayer.is_server():
+		Networking.send_all_info_to_clients()
+		
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():

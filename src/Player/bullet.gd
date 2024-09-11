@@ -22,16 +22,3 @@ func _physics_process(delta: float) -> void:
 		else:
 			bounces_left -= 1
 			direction = direction.bounce(collision.get_normal())
-
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if body == self:
-		#return
-	#
-	#if body.is_in_group('player'):
-		#print('hit')
-		#queue_free()
-	#elif bounces_left <= 0:
-		#queue_free()
-	#else:
-		#bounces_left -= 1
-		#direction = direction.bounce(collision.get_normal())
