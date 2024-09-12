@@ -60,7 +60,8 @@ func _process(delta: float) -> void:
 		#spectating_info_ui.show()
 
 func disconnect_player(player):
-	players.get_node(str(player)).queue_free()
+	if players.has_node(str(player)):
+		players.get_node(str(player)).queue_free()
 
 func make_all_moves():
 	currently_playing_moves = true
