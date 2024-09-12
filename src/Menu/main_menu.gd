@@ -19,6 +19,7 @@ func _ready() -> void:
 	if multiplayer.multiplayer_peer is ENetMultiplayerPeer:
 		main_menu.hide()
 		lobby.show()
+	Networking.in_game = false
 
 func _process(delta: float) -> void:
 	for node in players_grid.get_children():
@@ -32,6 +33,8 @@ func _process(delta: float) -> void:
 		players_grid.get_child(i).show()
 		players_grid.get_child(i).get_node('CustomLetter').text = Networking.connected_players[player]['custom_letter']
 		players_grid.get_child(i).get_node('IsReady').text = ['not ready', 'ready'][int(Networking.connected_players[player]['ready'])]
+		players_grid.get_child(i).get_node('CustomLetter').text = Networking.connected_players[player]['custom_letter']
+		players_grid.get_child(i).modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[player]['color']]
 		players_grid.get_child(i + 4).hide()
 		i += 1
 		

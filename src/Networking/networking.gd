@@ -11,6 +11,7 @@ var listener : PacketPeerUDP
 var available_servers = []
 var server_info = {}
 var connected_players = {}
+var in_game = false
 
 func create_server(port):
 	var peer = ENetMultiplayerPeer.new()
@@ -44,11 +45,16 @@ func _on_connected_fail():
 func _on_server_disconnected():
 	print("disconnected from server")
 func _on_peer_connected(id):
+	if Networking.in_game:
+		if multiplayer.is_server():
+			kick_client(id, 'failed to connect:\ngame in progress')
+		return
 	Networking.connected_players[id] = GlobalScript.DEFAULT_PLAYER_INFO
-	
 	print(str(id) + " connected")
 func _on_peer_disconnected(id):
-	
+	if Networking.in_game:
+		get_node('/root/Game').disconnect_player(id)
+	Networking.connected_players.erase(id)
 	print(str(id) + " disconnected")
 
 func advertise_server():
@@ -100,6 +106,8 @@ func finish_clients_moves():
 	rpc('finish_all_moves')
 func finish_clients_game():
 	rpc('finish_game')
+func kick_client(id, msg):
+	rpc_id(id, 'kicked_from_server', msg)
 
 @rpc("any_peer", "reliable")
 func receive_info_from_client(info):
@@ -121,10 +129,17 @@ func receive_client_move(move):
 	Networking.send_all_info_to_clients()
 @rpc("authority", "reliable")
 func act_all_moves():
-	get_node('/root/Game').make_all_moves()
+	if Networking.in_game:
+		get_node('/root/Game').make_all_moves()
 @rpc("authority", "reliable")
 func finish_all_moves():
-	get_node('/root/Game').moves_done()
+	if Networking.in_game:
+		get_node('/root/Game').moves_done()
 @rpc("authority", "reliable")
 func finish_game():
-	get_node('/root/Game').game_over()
+	if Networking.in_game:
+		get_node('/root/Game').game_over()
+@rpc("authority", "reliable")
+func kicked_from_server(msg):
+	multiplayer.multiplayer_peer = null
+	print(msg)

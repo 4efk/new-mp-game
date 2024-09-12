@@ -234,8 +234,10 @@ text = "winner:"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Player" parent="Ui/GameOver/Winner" instance=ExtResource("3_2yun1")]
+[node name="WinnerPlayer" parent="Ui/GameOver/Winner" instance=ExtResource("3_2yun1")]
 position = Vector2(640, 360)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("4_083j5")
 
 [node name="Draw" type="Control" parent="Ui/GameOver"]
@@ -346,7 +348,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="GameOverScreenTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/ConfirmMove/MoveConfirmButton" to="." method="_on_move_confirm_button_pressed"]

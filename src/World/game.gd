@@ -35,6 +35,7 @@ func _ready() -> void:
 		Networking.connected_players[player]['alive'] = true
 		
 		i += 1
+	Networking.in_game = true
 
 func _process(delta: float) -> void:
 	if game_finished:
@@ -57,6 +58,9 @@ func _process(delta: float) -> void:
 	#if !Networking.connected_players[multiplayer.get_unique_id()]['alive']:
 		#select_move_ui.hide()
 		#spectating_info_ui.show()
+
+func disconnect_player(player):
+	players.get_node(str(player)).queue_free()
 
 func make_all_moves():
 	currently_playing_moves = true
@@ -103,7 +107,8 @@ func game_over():
 			winner = player
 	if winner:
 		game_over_ui.get_node('Winner').show()
-		game_over_ui.get_node('Winner/WinnerPlayer')
+		game_over_ui.get_node('Winner/WinnerPlayer').get_node('CustomLetter').text = Networking.connected_players[winner]['custom_letter']
+		game_over_ui.get_node('Winner/WinnerPlayer').modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[winner]['color']]
 	else:
 		game_over_ui.get_node('Draw').show()
 	game_over_screen_timer.start()
@@ -121,6 +126,8 @@ func choose_move(move):
 	current_chosen_move = move
 
 func _on_move_confirm_button_pressed() -> void:
+	if current_chosen_move == null:
+		return
 	move_chosen = true
 	GlobalScript.self_player_info['move'] = current_chosen_move
 	if multiplayer.is_server():
