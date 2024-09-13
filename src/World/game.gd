@@ -47,17 +47,16 @@ func _process(delta: float) -> void:
 	var dead_players = []
 	for player in Networking.connected_players:
 		if !Networking.connected_players[player]['alive']:
-			dead_players.append(players)
+			dead_players.append(player)
 	if len(players_with_move) + len(dead_players) == len(Networking.connected_players) and !currently_playing_moves and multiplayer.is_server():
+		print(players_with_move)
+		print()
+		print(dead_players)
 		Networking.act_all_clients_moves()
 		make_all_moves()
 	if currently_playing_moves and move_timer.is_stopped() and !bullets.get_child_count() and multiplayer.is_server():
 		Networking.finish_clients_moves()
 		moves_done()
-		
-	#if !Networking.connected_players[multiplayer.get_unique_id()]['alive']:
-		#select_move_ui.hide()
-		#spectating_info_ui.show()
 
 func disconnect_player(player):
 	if players.has_node(str(player)):
@@ -68,11 +67,15 @@ func make_all_moves():
 	move_timer.start()
 	current_round += 1
 	for player in Networking.connected_players:
+		print(multiplayer.get_unique_id())
+		print(Networking.connected_players)
+		print(player)
+		print('----')
 		if !Networking.connected_players[player]['alive']:
 			return
 		players.get_node(str(player)).call(PLAYER_MOVE_OPTIONS[Networking.connected_players[player]['move']])
 		Networking.connected_players[player]['move'] = null
-
+	print()
 func moves_done():
 	currently_playing_moves = false
 	current_chosen_move = null
