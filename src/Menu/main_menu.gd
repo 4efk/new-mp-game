@@ -3,6 +3,8 @@ extends Control
 @onready var main_menu: Control = $MainMenu
 
 @onready var host_join_browser: Control = $HostJoinBrowser
+@onready var ip_address_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/IPAddress
+@onready var port_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/Port
 
 @onready var lobby: Control = $Lobby
 @onready var players_grid: GridContainer = $Lobby/VBoxContainer/PlayersGrid
@@ -72,7 +74,7 @@ func _on_host_button_pressed() -> void:
 	lobby.show()
 
 func _on_direct_join_button_pressed() -> void:
-	Networking.create_client('localhost', Networking.DEFAULT_GAME_PORT)
+	Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))# Networking.DEFAULT_GAME_PORT)
 	
 func _on_back_button_pressed() -> void:
 	main_menu.show()

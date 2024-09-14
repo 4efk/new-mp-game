@@ -135,7 +135,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 48
-text = "servers browser"
+text = "server browser"
 horizontal_alignment = 1
 
 [node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
@@ -186,6 +186,18 @@ theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[join]"
 flat = true
+
+[node name="IPAddress" type="LineEdit" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_16r03")
+text = "localhost"
+
+[node name="Port" type="LineEdit" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_16r03")
+text = "localhost"
 
 [node name="DirectJoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
