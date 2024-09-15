@@ -31,7 +31,6 @@ func move_shoot():
 
 func hit():
 	Networking.connected_players[int(str(name))]['alive'] = false
-	print(int(str(name)))
 	if multiplayer.is_server():
 		Networking.send_all_info_to_clients()
 	queue_free()

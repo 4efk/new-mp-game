@@ -197,7 +197,7 @@ text = "localhost"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_16r03")
-text = "localhost"
+text = "4242"
 
 [node name="DirectJoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
