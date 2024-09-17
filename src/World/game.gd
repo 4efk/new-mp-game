@@ -82,6 +82,9 @@ func moves_done():
 	
 	if !multiplayer.is_server():
 		return
+		
+	Networking.send_all_info_to_clients()
+		
 	var alive_players = []
 	for player in Networking.connected_players:
 		if Networking.connected_players[player]['alive']:

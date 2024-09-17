@@ -37,7 +37,13 @@ func hit():
 
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():
+		if Networking.connected_players[int(str(name))]['transforms'][0] != Vector2() and Networking.connected_players[int(str(name))]['transforms'][0] != global_position:
+			var tween = get_tree().create_tween()
+			tween.tween_property(self, 'global_position', Networking.connected_players[int(str(name))]['transforms'][0], .1)
 		return
+	
+	if multiplayer.is_server():
+		Networking.connected_players[int(str(name))]['transforms'] = [global_position, rotation]
 	
 	velocity = Vector2(1, 0).rotated(rotation) * speed * move_direction
 	
