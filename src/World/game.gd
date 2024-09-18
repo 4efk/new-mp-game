@@ -83,7 +83,8 @@ func moves_done():
 	if !multiplayer.is_server():
 		return
 		
-	Networking.send_all_info_to_clients()
+	#Networking.send_all_info_to_clients()
+	Networking.correct_clients_transforms()
 		
 	var alive_players = []
 	for player in Networking.connected_players:
@@ -92,7 +93,12 @@ func moves_done():
 	if len(alive_players) < 2:
 		Networking.finish_clients_game()
 		game_over()
-		
+
+func correct_players_transforms():
+	for player in players.get_children():
+		var tween = get_tree().create_tween()
+		tween.tween_property(player, 'global_position', Networking.connected_players[int(str(player.name))]['transforms'][0], 0.25)
+
 func game_over():
 	game_finished = true
 	select_move_ui.hide()

@@ -5,6 +5,7 @@ var bullet_scene = preload("res://Player/bullet.tscn")
 var speed = 300.0
 var move_direction = 0
 var network_id
+var move_time = 1.0
 
 @onready var move_timer: Timer = $MoveTimer
 @onready var barrel_end: Marker2D = $BarrelEnd
@@ -17,11 +18,11 @@ func move_backward():
 	move_timer.start()
 func move_rotate_cw():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, 'rotation', rotation + PI/8 * 1, 1)
+	tween.tween_property(self, 'rotation', rotation + PI/8 * 1, move_time)
 	move_timer.start()
 func move_rotate_ccw():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, 'rotation', rotation + PI/8 * -1, 1)
+	tween.tween_property(self, 'rotation', rotation + PI/8 * -1, move_time)
 	move_timer.start()
 func move_shoot():
 	var bullet_instance = bullet_scene.instantiate()
@@ -37,9 +38,6 @@ func hit():
 
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():
-		if Networking.connected_players[int(str(name))]['transforms'][0] != Vector2() and Networking.connected_players[int(str(name))]['transforms'][0] != global_position:
-			var tween = get_tree().create_tween()
-			tween.tween_property(self, 'global_position', Networking.connected_players[int(str(name))]['transforms'][0], .1)
 		return
 	
 	if multiplayer.is_server():

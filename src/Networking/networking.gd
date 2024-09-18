@@ -104,6 +104,8 @@ func act_all_clients_moves():
 	rpc('act_all_moves')
 func finish_clients_moves():
 	rpc('finish_all_moves')
+func correct_clients_transforms():
+	rpc('correct_transforms', Networking.connected_players)
 func finish_clients_game():
 	rpc('finish_game')
 func kick_client(id, msg):
@@ -135,6 +137,11 @@ func act_all_moves():
 func finish_all_moves():
 	if Networking.in_game:
 		get_node('/root/Game').moves_done()
+@rpc("authority", "reliable")
+func correct_transforms(info):
+	Networking.connected_players = info
+	if Networking.in_game:
+		get_node('/root/Game').correct_players_transforms()
 @rpc("authority", "reliable")
 func finish_game():
 	if Networking.in_game:
