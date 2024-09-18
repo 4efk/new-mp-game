@@ -36,6 +36,10 @@ func hit():
 		Networking.send_all_info_to_clients()
 	queue_free()
 
+func _ready() -> void:
+	if multiplayer.is_server():
+		Networking.connected_players[int(str(name))]['transforms'] = [global_position, rotation]
+
 func _physics_process(delta: float) -> void:
 	if move_timer.is_stopped():
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwu33jyakwu12"]
+[gd_scene load_steps=8 format=3 uid="uid://cwu33jyakwu12"]
 
 [ext_resource type="Script" path="res://World/game.gd" id="1_8juat"]
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="2_2mgga"]
@@ -10,6 +10,9 @@ size = Vector2(1920, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7c50"]
 size = Vector2(40, 1179.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mujjb"]
+size = Vector2(300, 300)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_8juat")
@@ -324,6 +327,54 @@ theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("2_2mgga")
 theme_override_font_sizes/font_size = 48
 text = "####################################"
+
+[node name="CenterBox" type="StaticBody2D" parent="Borders"]
+position = Vector2(960, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/CenterBox"]
+shape = SubResource("RectangleShape2D_mujjb")
+
+[node name="UpperBorder" type="Label" parent="Borders/CenterBox"]
+offset_left = -150.0
+offset_top = -168.0
+offset_right = 1146.0
+offset_bottom = -88.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2mgga")
+theme_override_font_sizes/font_size = 48
+text = "##########"
+
+[node name="LeftBorder" type="Label" parent="Borders/CenterBox"]
+offset_left = -98.0
+offset_top = -150.0
+offset_right = 1198.0
+offset_bottom = -70.0
+rotation = 1.5708
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2mgga")
+theme_override_font_sizes/font_size = 48
+text = " ########"
+
+[node name="RightBorder" type="Label" parent="Borders/CenterBox"]
+offset_left = 168.0
+offset_top = -150.0
+offset_right = 1464.0
+offset_bottom = -70.0
+rotation = 1.5708
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2mgga")
+theme_override_font_sizes/font_size = 48
+text = " ########"
+
+[node name="BottomBorder" type="Label" parent="Borders/CenterBox"]
+offset_left = -150.0
+offset_top = 98.0
+offset_right = 1146.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("2_2mgga")
+theme_override_font_sizes/font_size = 48
+text = "##########"
 
 [node name="Spawnpoints" type="Node" parent="."]
 

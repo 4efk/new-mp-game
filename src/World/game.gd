@@ -31,6 +31,7 @@ func _ready() -> void:
 		player_instance.get_node('CustomLetter').text = Networking.connected_players[player]['custom_letter']
 		player_instance.modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[player]['color']]
 		player_instance.global_position = spawnpoints.get_child(i).global_position
+		player_instance.global_rotation = [PI/4, 3*PI/4, 7*PI/8, 5*PI/8][i]
 		players.add_child(player_instance)
 		Networking.connected_players[player]['alive'] = true
 		
@@ -82,10 +83,7 @@ func moves_done():
 	
 	if !multiplayer.is_server():
 		return
-		
-	#Networking.send_all_info_to_clients()
 	Networking.correct_clients_transforms()
-		
 	var alive_players = []
 	for player in Networking.connected_players:
 		if Networking.connected_players[player]['alive']:

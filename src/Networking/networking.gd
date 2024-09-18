@@ -149,4 +149,7 @@ func finish_game():
 @rpc("authority", "reliable")
 func kicked_from_server(msg):
 	multiplayer.multiplayer_peer = null
+	if !Networking.in_game:
+		get_node('/root/MainMenu').lobby.hide()
+		get_node('/root/MainMenu').host_join_browser.show()
 	print(msg)
