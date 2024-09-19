@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_nmt8t")
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -601,6 +602,144 @@ one_shot = true
 
 [node name="StartCountdownTimer" type="Timer" parent="Lobby"]
 
+[node name="Customize" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Customize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Customize/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 48
+text = "customize"
+horizontal_alignment = 1
+
+[node name="Player" type="CharacterBody2D" parent="Customize/VBoxContainer"]
+position = Vector2(540, 320)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="Customize/VBoxContainer/Player"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Customize/VBoxContainer/Player"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="Customize/VBoxContainer/Player"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="Customize/VBoxContainer/Player"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="Customize/VBoxContainer/Player"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="Customize/VBoxContainer/Player"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="Customize/VBoxContainer/Player"]
+offset_left = -38.0
+offset_top = 44.0
+offset_right = 34.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+
+[node name="PlayersGrid" type="GridContainer" parent="Customize/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Customize/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ChooseColorButton" type="Button" parent="Customize/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "[color]
+"
+flat = true
+
+[node name="Label" type="Label" parent="Customize/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "custom letter:"
+
+[node name="CustomLetter" type="LineEdit" parent="Customize/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "h"
+max_length = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Customize/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="CBackButton" type="Button" parent="Customize/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "[back]
+"
+flat = true
+
 [connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/CustomizeButton" to="." method="_on_customize_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
@@ -616,3 +755,7 @@ one_shot = true
 [connection signal="pressed" from="Lobby/VBoxContainer/HBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]
 [connection signal="timeout" from="Lobby/ReadyCooldownTimer" to="." method="_on_ready_cooldown_timer_timeout"]
 [connection signal="timeout" from="Lobby/StartCountdownTimer" to="." method="_on_start_countdown_timer_timeout"]
+[connection signal="timeout" from="Customize/VBoxContainer/Player/MoveTimer" to="Customize/VBoxContainer/Player" method="_on_move_timer_timeout"]
+[connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
+[connection signal="text_changed" from="Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
+[connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]

@@ -31,7 +31,7 @@ func _ready() -> void:
 		player_instance.get_node('CustomLetter').text = Networking.connected_players[player]['custom_letter']
 		player_instance.modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[player]['color']]
 		player_instance.global_position = spawnpoints.get_child(i).global_position
-		player_instance.global_rotation = [PI/4, 3*PI/4, 7*PI/8, 5*PI/8][i]
+		player_instance.global_rotation = [PI/4, 5*PI/4, 3*PI/4, 7*PI/4][i]
 		players.add_child(player_instance)
 		Networking.connected_players[player]['alive'] = true
 		
@@ -103,6 +103,7 @@ func game_over():
 	spectating_info_ui.hide()
 	selected_move_label.get_parent().hide()
 	game_over_ui.show()
+	$Borders.hide()
 	go_round_count.text = 'turns: ' + str(current_round)
 	var winner
 	for player in Networking.connected_players:

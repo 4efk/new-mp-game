@@ -14,6 +14,10 @@ extends Control
 @onready var start_countdown_timer: Timer = $Lobby/StartCountdownTimer
 @onready var start_countdown: Label = $Lobby/StartCountdownContainer/StartCountdown
 
+@onready var customize_ui: Control = $Customize
+@onready var customize_ui_player: CharacterBody2D = $Customize/VBoxContainer/Player
+@onready var customize_ui_custom_letter_lineedit: LineEdit = $Customize/VBoxContainer/HBoxContainer/CustomLetter
+
 var can_change_ready = true
 var start_timer = 5
 
@@ -22,6 +26,10 @@ func _ready() -> void:
 		main_menu.hide()
 		lobby.show()
 	Networking.in_game = false
+	
+	# customization ui stuff
+	customize_ui_player.modulate = GlobalScript.PLAYER_COLORS[GlobalScript.settings['player_color']]
+	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
 
 func _process(delta: float) -> void:
 	for node in players_grid.get_children():
@@ -61,7 +69,8 @@ func _on_play_button_pressed() -> void:
 	main_menu.hide()
 	host_join_browser.show()
 func _on_customize_button_pressed() -> void:
-	pass # Replace with function body.
+	main_menu.hide()
+	customize_ui.show()
 func _on_settings_button_pressed() -> void:
 	pass # Replace with function body.
 func _on_quit_button_pressed() -> void:
@@ -72,10 +81,8 @@ func _on_host_button_pressed() -> void:
 	Networking.create_server(Networking.DEFAULT_GAME_PORT)
 	host_join_browser.hide()
 	lobby.show()
-
 func _on_direct_join_button_pressed() -> void:
 	Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))# Networking.DEFAULT_GAME_PORT)
-	
 func _on_back_button_pressed() -> void:
 	main_menu.show()
 	host_join_browser.hide()
@@ -105,3 +112,23 @@ func _on_start_countdown_timer_timeout() -> void:
 			Networking.start_clients_game()
 			get_tree().change_scene_to_file("res://World/game.tscn")
 		start_countdown_timer.stop()
+		
+# customize stuff
+func _on_choose_color_button_pressed() -> void:
+	if GlobalScript.settings['player_color'] + 1 >= len(GlobalScript.PLAYER_COLORS):
+		GlobalScript.settings['player_color'] = 0
+	else:
+		GlobalScript.settings['player_color'] += 1
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+	
+	customize_ui_player.modulate = GlobalScript.PLAYER_COLORS[GlobalScript.settings['player_color']]
+func _on_custom_letter_text_changed(new_text: String) -> void:
+	GlobalScript.settings['player_custom_letter'] = customize_ui_custom_letter_lineedit.text
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+	
+	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
+func _on_c_back_button_pressed() -> void:
+	customize_ui.hide()
+	main_menu.show()

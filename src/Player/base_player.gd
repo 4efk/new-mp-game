@@ -28,6 +28,8 @@ func move_shoot():
 	var bullet_instance = bullet_scene.instantiate()
 	bullet_instance.direction = Vector2(1, 0).rotated(rotation)
 	bullet_instance.global_position = barrel_end.global_position
+	bullet_instance.get_node('Letter').text = get_node("CustomLetter").text
+	bullet_instance.modulate = modulate
 	get_parent().get_parent().get_node('Bullets').add_child(bullet_instance)
 
 func hit():

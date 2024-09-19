@@ -267,7 +267,7 @@ text = "draw."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Borders" type="Node" parent="."]
+[node name="Borders" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
 
@@ -381,14 +381,14 @@ text = "##########"
 [node name="Spawnpoint1" type="Marker2D" parent="Spawnpoints"]
 position = Vector2(200, 200)
 
+[node name="Spawnpoint4" type="Marker2D" parent="Spawnpoints"]
+position = Vector2(1719, 879)
+
 [node name="Spawnpoint2" type="Marker2D" parent="Spawnpoints"]
 position = Vector2(1719, 200)
 
 [node name="Spawnpoint3" type="Marker2D" parent="Spawnpoints"]
 position = Vector2(200, 879)
-
-[node name="Spawnpoint4" type="Marker2D" parent="Spawnpoints"]
-position = Vector2(1719, 879)
 
 [node name="Players" type="Node" parent="."]
 
