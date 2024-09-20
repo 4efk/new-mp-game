@@ -8,7 +8,10 @@ var broadcaster : PacketPeerUDP
 var listener : PacketPeerUDP
 @onready var broadcast_timer: Timer = $BroadcastTimer
 
-var available_servers = []
+var self_server_ip_address : String = 'localhost'
+var self_server_port : int
+
+var available_servers = {}
 var server_info = {}
 var connected_players = {}
 var in_game = false
@@ -17,6 +20,8 @@ func create_server(port):
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(port, 3)
 	multiplayer.multiplayer_peer = peer
+	
+	self_server_port = port
 	
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
@@ -58,7 +63,7 @@ func _on_peer_disconnected(id):
 	print(str(id) + " disconnected")
 
 func advertise_server():
-	broadcaster.put_packet("hi, can you hear me?".to_ascii_buffer())
+	broadcaster.put_packet((self_server_ip_address+'/'+str(self_server_port)+'/'+str(len(Networking.connected_players))).to_ascii_buffer())
 
 func close_server():
 	multiplayer.multiplayer_peer = null
@@ -73,6 +78,11 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 	
+	for address in IP.get_local_addresses():
+		if address.begins_with('192.168'):
+			print(address)
+			self_server_ip_address = address
+	
 	# LAN server detection
 	listener = PacketPeerUDP.new()
 	listener.bind(ADVERTISE_LISTEN_PORT)
@@ -80,8 +90,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var packet = listener.get_packet().get_string_from_ascii()
 	if packet:
-		pass #print(packet)
-	
+		var server_data = packet.split('/')
+		available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2])]
+		
+		print(available_servers)
 	#print(multiplayer.get_unique_id(), connected_players, '\n')
 	
 func _on_broadcast_timer_timeout() -> void:

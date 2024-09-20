@@ -110,7 +110,6 @@ text = "[quit]"
 flat = true
 
 [node name="HostJoinBrowser" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +128,7 @@ offset_top = 50.0
 offset_right = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Title" type="Label" parent="HostJoinBrowser/VBoxContainer"]
 layout_mode = 2
@@ -138,12 +138,16 @@ theme_override_font_sizes/font_size = 48
 text = "server browser"
 horizontal_alignment = 1
 
-[node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="Server1" type="Button" parent="HostJoinBrowser/VBoxContainer/Servers"]
-visible = false
+[node name="Server1" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -152,8 +156,7 @@ theme_override_font_sizes/font_size = 32
 text = "server 1"
 flat = true
 
-[node name="Server2" type="Button" parent="HostJoinBrowser/VBoxContainer/Servers"]
-visible = false
+[node name="Server2" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -162,8 +165,88 @@ theme_override_font_sizes/font_size = 32
 text = "server 2"
 flat = true
 
-[node name="Server3" type="Button" parent="HostJoinBrowser/VBoxContainer/Servers"]
-visible = false
+[node name="Server3" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server4" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server5" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server6" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server7" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server8" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server9" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server10" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server11" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "server 3"
+flat = true
+
+[node name="Server12" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -603,6 +686,7 @@ one_shot = true
 [node name="StartCountdownTimer" type="Timer" parent="Lobby"]
 
 [node name="Customize" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
