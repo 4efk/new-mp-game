@@ -80,7 +80,6 @@ func _ready() -> void:
 	
 	for address in IP.get_local_addresses():
 		if address.begins_with('192.168'):
-			print(address)
 			self_server_ip_address = address
 	
 	# LAN server detection
@@ -90,10 +89,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var packet = listener.get_packet().get_string_from_ascii()
 	if packet:
-		var server_data = packet.split('/')
-		available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2])]
+		if len(packet.split('/')) == 3 and packet.split('/')[0].is_valid_ip_address():
+			var server_data = packet.split('/')
+			available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2])]
 		
-		print(available_servers)
+			print(available_servers)
 	#print(multiplayer.get_unique_id(), connected_players, '\n')
 	
 func _on_broadcast_timer_timeout() -> void:

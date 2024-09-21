@@ -141,6 +141,7 @@ func _on_move_confirm_button_pressed() -> void:
 	selected_move_label.text = 'selected move: ' + PLAYER_MOVE_OPTIONS_NAMES[current_chosen_move]
 	select_move_ui.hide()
 	selected_move_label.get_parent().show()
+
 func _on_move_button_pressed() -> void:
 	choose_move(0)
 func _on_move_button_1_pressed() -> void:
