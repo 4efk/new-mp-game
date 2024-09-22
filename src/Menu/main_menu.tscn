@@ -17,7 +17,6 @@ grow_vertical = 2
 script = ExtResource("1_nmt8t")
 
 [node name="MainMenu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,6 +110,7 @@ text = "[quit]"
 flat = true
 
 [node name="HostJoinBrowser" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,6 +158,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="JoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -184,7 +185,7 @@ focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
-text = "[dirjoin]"
+text = "[direct join]"
 flat = true
 
 [node name="HostButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
