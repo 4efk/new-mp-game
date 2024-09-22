@@ -37,9 +37,21 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# server browser ui
-	#for available_server in Networking.available_servers:
-		#if server_list.has
-	
+	for available_server in Networking.available_servers:
+		if !server_list.has_node(available_server):
+			var server_button_instance = server_browser_server_button.instantiate()
+			server_button_instance.name = available_server
+			server_button_instance.text = available_server
+			server_button_instance.ip_address = Networking.available_servers[available_server][0]
+			server_button_instance.port = Networking.available_servers[available_server][1]
+			server_list.add_child(server_button_instance)
+			print(1)
+	for server_button in server_list.get_children():
+		print
+		if not str(server_button.name) in Networking.available_servers.keys():
+			server_button.queue_free()
+			print(2)
+	#
 	# lobby ui
 	for node in players_grid.get_children():
 		if str(node.name).begins_with('Player'):
