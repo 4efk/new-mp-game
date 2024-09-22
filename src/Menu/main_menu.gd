@@ -1,10 +1,14 @@
 extends Control
 
+var server_browser_server_button = preload("res://Menu/ServerBrowser/sb_server_button.tscn")
+
 @onready var main_menu: Control = $MainMenu
 
 @onready var host_join_browser: Control = $HostJoinBrowser
 @onready var ip_address_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/IPAddress
 @onready var port_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/Port
+@onready var server_list: VBoxContainer = $HostJoinBrowser/VBoxContainer/ScrollContainer/Servers
+
 
 @onready var lobby: Control = $Lobby
 @onready var players_grid: GridContainer = $Lobby/VBoxContainer/PlayersGrid
@@ -32,6 +36,11 @@ func _ready() -> void:
 	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
 
 func _process(delta: float) -> void:
+	# server browser ui
+	#for available_server in Networking.available_servers:
+		#if server_list.has
+	
+	# lobby ui
 	for node in players_grid.get_children():
 		if str(node.name).begins_with('Player'):
 			node.hide()

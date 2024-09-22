@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://2unws7tipg78"]
+[gd_scene load_steps=5 format=3 uid="uid://2unws7tipg78"]
 
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="1_16r03"]
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_nmt8t"]
+[ext_resource type="PackedScene" uid="uid://dx1d8plcirj2f" path="res://Menu/ServerBrowser/sb_server_button.tscn" id="3_53wn7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(128, 64)
@@ -16,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_nmt8t")
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +111,6 @@ text = "[quit]"
 flat = true
 
 [node name="HostJoinBrowser" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,113 +148,8 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="Server1" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
+[node name="ServerButton" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 1"
-flat = true
-
-[node name="Server2" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 2"
-flat = true
-
-[node name="Server3" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server4" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server5" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server6" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server7" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server8" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server9" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server10" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server11" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
-
-[node name="Server12" type="Button" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "server 3"
-flat = true
 
 [node name="Buttons" type="HBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
 layout_mode = 2

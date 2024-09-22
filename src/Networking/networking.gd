@@ -12,6 +12,7 @@ var self_server_ip_address : String = 'localhost'
 var self_server_port : int
 
 var available_servers = {}
+var available_server_timeout_time = 4
 var server_info = {}
 var connected_players = {}
 var in_game = false
@@ -91,9 +92,15 @@ func _process(delta: float) -> void:
 	if packet:
 		if len(packet.split('/')) == 3 and packet.split('/')[0].is_valid_ip_address():
 			var server_data = packet.split('/')
-			available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2])]
+			available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2]), available_server_timeout_time]
 		
-			print(available_servers)
+	#print(len(available_servers))
+	print(available_servers.keys())
+	
+	for server in available_servers:
+		available_servers[server][3] -= delta
+		if available_servers[server][3] <= 0:
+			available_servers.erase(server)
 	#print(multiplayer.get_unique_id(), connected_players, '\n')
 	
 func _on_broadcast_timer_timeout() -> void:
