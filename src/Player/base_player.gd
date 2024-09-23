@@ -7,8 +7,12 @@ var move_direction = 0
 var network_id
 var move_time = 1.0
 
+var track_states = ['~-~-~-~', '-~-~-~-']
+
 @onready var move_timer: Timer = $MoveTimer
 @onready var barrel_end: Marker2D = $BarrelEnd
+@onready var left_track: Label = $LeftTrack
+@onready var right_track: Label = $RightTrack
 
 func move_forward():
 	move_direction = 1
@@ -54,6 +58,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# the animation
-
+	var current_track_state = track_states[int(Time.get_ticks_msec() % 1000 > 500)]
+	left_track.text = current_track_state
+	right_track.text = current_track_state
+	
 func _on_move_timer_timeout() -> void:
 	move_direction = 0

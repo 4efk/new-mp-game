@@ -49,6 +49,13 @@ func _on_connected_ok():
 func _on_connected_fail():
 	print("connectection failed")
 func _on_server_disconnected():
+	close_server()
+	if Networking.in_game:
+		get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
+	else:
+		get_node('/root/MainMenu').lobby.hide()
+		get_node('/root/MainMenu').host_join_browser.show()
+	
 	print("disconnected from server")
 func _on_peer_connected(id):
 	if Networking.in_game:
@@ -167,8 +174,10 @@ func finish_game():
 		get_node('/root/Game').game_over()
 @rpc("authority", "reliable")
 func kicked_from_server(msg):
-	multiplayer.multiplayer_peer = null
-	if !Networking.in_game:
+	close_server()
+	if Networking.in_game:
+		get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
+	else:
 		get_node('/root/MainMenu').lobby.hide()
 		get_node('/root/MainMenu').host_join_browser.show()
 	print(msg)

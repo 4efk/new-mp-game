@@ -16,7 +16,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dvtrj")
 
-[node name="Label" type="Label" parent="."]
+[node name="LeftTrack" type="Label" parent="."]
 offset_left = -67.0
 offset_top = -50.0
 offset_right = 67.0
@@ -26,7 +26,7 @@ theme_override_fonts/font = ExtResource("3_pnuyn")
 theme_override_font_sizes/font_size = 32
 text = "~-~-~-~"
 
-[node name="Label2" type="Label" parent="."]
+[node name="RightTrack" type="Label" parent="."]
 offset_left = -67.0
 offset_top = 5.0
 offset_right = 67.0
