@@ -31,6 +31,10 @@ func _ready() -> void:
 		lobby.show()
 	Networking.in_game = false
 	
+	if Networking.alert_queue:
+		show_popup(Networking.alert_queue[len(Networking.alert_queue)-1])
+		Networking.alert_queue = []
+	
 	# customization ui stuff
 	customize_ui_player.modulate = GlobalScript.PLAYER_COLORS[GlobalScript.settings['player_color']]
 	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
@@ -161,5 +165,9 @@ func _on_c_back_button_pressed() -> void:
 	main_menu.show()
 
 # popups stuff
+func show_popup(msg):
+	get_node("Popups/Popup1").show()
+	get_node("Popups/Popup1/VBoxContainer/Text").text = msg
+
 func _on_popup_close_button_pressed() -> void:
 	get_node("Popups/Popup1").hide()

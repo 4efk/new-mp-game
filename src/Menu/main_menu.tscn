@@ -45,8 +45,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 64
-text = "game that games"
+text = "ascii tanks"
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="Title2" type="Label" parent="MainMenu/VBoxContainer"]
 visible = false
@@ -145,14 +151,20 @@ theme_override_font_sizes/font_size = 48
 text = "server browser"
 horizontal_alignment = 1
 
+[node name="Spacer2" type="ColorRect" parent="HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
 [node name="ScrollContainer" type="ScrollContainer" parent="HostJoinBrowser/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
 [node name="ServerButton" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
@@ -188,6 +200,11 @@ layout_mode = 2
 [node name="ServerButton11" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
+[node name="Spacer" type="ColorRect" parent="HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
 [node name="Buttons" type="HBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
@@ -211,6 +228,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
+text = "localhost"
 placeholder_text = "ip address"
 alignment = 1
 
@@ -842,7 +860,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Popups/Popup1/VBoxContainer"]
+[node name="Text" type="Label" parent="Popups/Popup1/VBoxContainer"]
 custom_minimum_size = Vector2(100, 34)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)

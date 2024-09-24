@@ -17,6 +17,8 @@ var server_info = {}
 var connected_players = {}
 var in_game = false
 
+var alert_queue = []
+
 func create_server(port):
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(port, 3)
@@ -47,6 +49,8 @@ func _on_connected_ok():
 	
 	print("connected to server")
 func _on_connected_fail():
+	handle_warning('failed to connect')
+	
 	print("connectection failed")
 func _on_server_disconnected():
 	close_server()
@@ -55,12 +59,13 @@ func _on_server_disconnected():
 	else:
 		get_node('/root/MainMenu').lobby.hide()
 		get_node('/root/MainMenu').host_join_browser.show()
-	
+	handle_warning('server disconnected')
+		
 	print("disconnected from server")
 func _on_peer_connected(id):
 	if Networking.in_game:
 		if multiplayer.is_server():
-			kick_client(id, 'failed to connect:\ngame in progress')
+			kick_client(id, 'game in progress')
 		return
 	Networking.connected_players[id] = GlobalScript.DEFAULT_PLAYER_INFO
 	print(str(id) + " connected")
@@ -72,6 +77,12 @@ func _on_peer_disconnected(id):
 
 func advertise_server():
 	broadcaster.put_packet((self_server_ip_address+'/'+str(self_server_port)+'/'+str(len(Networking.connected_players))).to_ascii_buffer())
+
+func handle_warning(msg):
+	if Networking.in_game:
+		alert_queue.append(msg)
+	else:
+		get_node('/root/MainMenu').show_popup(msg)
 
 func close_server():
 	multiplayer.multiplayer_peer = null
@@ -100,16 +111,12 @@ func _process(delta: float) -> void:
 		if len(packet.split('/')) == 3 and packet.split('/')[0].is_valid_ip_address():
 			var server_data = packet.split('/')
 			available_servers[server_data[0]+':'+server_data[1]] = [server_data[0], int(server_data[1]), int(server_data[2]), available_server_timeout_time]
-		
-	#print(len(available_servers))
-	print(available_servers.keys())
 	
 	for server in available_servers:
 		available_servers[server][3] -= delta
 		if available_servers[server][3] <= 0:
 			available_servers.erase(server)
-	#print(multiplayer.get_unique_id(), connected_players, '\n')
-	
+
 func _on_broadcast_timer_timeout() -> void:
 	advertise_server()
 
@@ -180,4 +187,4 @@ func kicked_from_server(msg):
 	else:
 		get_node('/root/MainMenu').lobby.hide()
 		get_node('/root/MainMenu').host_join_browser.show()
-	print(msg)
+	handle_warning(msg)
