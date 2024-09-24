@@ -54,9 +54,9 @@ func _process(delta: float) -> void:
 			server_button_instance.port = Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(available_server)]][1]
 			server_list.add_child(server_button_instance)
 	
-	for server_button in server_list.get_children():
-		if not server_button.name in available_servers_names_reformatted:
-			server_button.queue_free()
+	#for server_button in server_list.get_children():
+		#if not server_button.name in available_servers_names_reformatted:
+			#server_button.queue_free()
 	
 	# lobby ui
 	for node in players_grid.get_children():

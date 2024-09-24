@@ -19,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_nmt8t")
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +113,6 @@ text = "[quit]"
 flat = true
 
 [node name="HostJoinBrowser" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,8 +149,39 @@ horizontal_scroll_mode = 0
 [node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+alignment = 1
 
 [node name="ServerButton" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton2" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton3" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton4" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton5" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton6" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton7" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton8" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton9" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton10" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+layout_mode = 2
+
+[node name="ServerButton11" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
