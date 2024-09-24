@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2unws7tipg78"]
+[gd_scene load_steps=7 format=3 uid="uid://2unws7tipg78"]
 
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="1_16r03"]
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_nmt8t"]
 [ext_resource type="PackedScene" uid="uid://dx1d8plcirj2f" path="res://Menu/ServerBrowser/sb_server_button.tscn" id="3_53wn7"]
+[ext_resource type="StyleBox" uid="uid://bp4lcb44bdeo2" path="res://Menu/style_lineedit_focused.tres" id="4_5wy08"]
+[ext_resource type="StyleBox" uid="uid://xtakhswp08ox" path="res://Menu/style_lineedit_normal.tres" id="5_jkffx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(128, 64)
@@ -171,13 +173,20 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_16r03")
-text = "localhost"
+theme_override_styles/focus = ExtResource("4_5wy08")
+theme_override_styles/normal = ExtResource("5_jkffx")
+placeholder_text = "ip address"
+alignment = 1
 
 [node name="Port" type="LineEdit" parent="HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_styles/focus = ExtResource("4_5wy08")
+theme_override_styles/normal = ExtResource("5_jkffx")
 text = "4242"
+placeholder_text = "port"
+alignment = 1
 
 [node name="DirectJoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
@@ -700,9 +709,14 @@ text = "custom letter:"
 
 [node name="CustomLetter" type="LineEdit" parent="Customize/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "h"
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = ExtResource("4_5wy08")
+theme_override_styles/normal = ExtResource("5_jkffx")
+text = "H"
+alignment = 1
 max_length = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Customize/VBoxContainer"]

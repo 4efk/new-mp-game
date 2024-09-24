@@ -34,6 +34,7 @@ func _ready() -> void:
 	# customization ui stuff
 	customize_ui_player.modulate = GlobalScript.PLAYER_COLORS[GlobalScript.settings['player_color']]
 	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
+	customize_ui_custom_letter_lineedit.text = GlobalScript.settings['player_custom_letter']
 
 func _process(delta: float) -> void:
 	# server browser ui

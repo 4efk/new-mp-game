@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
 	'player_color': 0,
 	'player_custom_letter': "H",
 }
-const DEFAULT_PLAYER_INFO = {'color': 6, 'custom_letter': "C", 'ready': false, 'alive':false, 'move':null, 'transforms': [Vector2(), PI/2]}
+const DEFAULT_PLAYER_INFO = {'color': 6, 'custom_letter': "H", 'ready': false, 'alive':false, 'move':null, 'transforms': [Vector2(), PI/2]}
 
 var settings = DEFAULT_SETTINGS.duplicate()
 var self_player_info = DEFAULT_PLAYER_INFO.duplicate()
