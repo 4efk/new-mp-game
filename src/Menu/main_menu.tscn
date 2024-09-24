@@ -19,7 +19,6 @@ grow_vertical = 2
 script = ExtResource("1_nmt8t")
 
 [node name="MainMenu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +79,7 @@ horizontal_alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[play]"
@@ -89,6 +89,7 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[customize]"
@@ -98,6 +99,7 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[settings]"
@@ -107,12 +109,14 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[quit]"
 flat = true
 
 [node name="HostJoinBrowser" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,6 +199,7 @@ visible = false
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[join]"
@@ -223,6 +228,7 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[direct join]"
@@ -232,6 +238,7 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[host]"
@@ -241,6 +248,7 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[back]"
@@ -584,6 +592,7 @@ flat = true
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[leave]
@@ -726,6 +735,7 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[color]
@@ -760,10 +770,98 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[back]
 "
+flat = true
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Popups" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Popup1" type="Control" parent="Popups"]
+visible = false
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Popups/Popup1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Popups/Popup1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -87.0
+offset_right = 157.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.176471, 0.164706, 0.180392, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popup1"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Popups/Popup1/VBoxContainer"]
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "adas ajkdadjnkaskd"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PopupCloseButton" type="Button" parent="Popups/Popup1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 24
+text = "[close]"
 flat = true
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
@@ -785,3 +883,4 @@ flat = true
 [connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
 [connection signal="text_changed" from="Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
 [connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]
+[connection signal="pressed" from="Popups/Popup1/VBoxContainer/PopupCloseButton" to="." method="_on_popup_close_button_pressed"]

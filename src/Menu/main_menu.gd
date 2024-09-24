@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 		if !server_list.has_node(available_server):
 			var server_button_instance = server_browser_server_button.instantiate()
 			server_button_instance.name = available_server
-			server_button_instance.text = available_servers_key_strings[available_servers_names_reformatted.find(available_server)]
+			server_button_instance.text = available_servers_key_strings[available_servers_names_reformatted.find(available_server)] + ' - ' + str(Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(available_server)]][2]) + '/4 players'
 			server_button_instance.ip_address = Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(available_server)]][0]
 			server_button_instance.port = Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(available_server)]][1]
 			server_list.add_child(server_button_instance)
@@ -159,3 +159,7 @@ func _on_custom_letter_text_changed(new_text: String) -> void:
 func _on_c_back_button_pressed() -> void:
 	customize_ui.hide()
 	main_menu.show()
+
+# popups stuff
+func _on_popup_close_button_pressed() -> void:
+	get_node("Popups/Popup1").hide()
