@@ -829,6 +829,7 @@ offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(1, 0.945098, 0.952941, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Popups/Popup1"]
 layout_mode = 1

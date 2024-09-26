@@ -16,6 +16,7 @@ var player_scene = preload("res://Player/player.tscn")
 @onready var game_over_screen_timer: Timer = $GameOverScreenTimer
 @onready var game_over_ui: Control = $Ui/GameOver
 @onready var go_round_count: Label = $Ui/GameOver/RoundCount
+@onready var pause_menu_ui: Control = $Ui/PauseMenu
 
 var current_round = 0
 var game_finished = false
@@ -39,6 +40,9 @@ func _ready() -> void:
 	Networking.in_game = true
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		_on_pause_button_pressed()
+	
 	if game_finished:
 		return
 	var players_with_move = []
@@ -161,3 +165,7 @@ func _on_game_over_screen_timer_timeout() -> void:
 		Networking.connected_players[player]['ready'] = GlobalScript.DEFAULT_PLAYER_INFO['ready']
 		
 	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
+
+# pause menu
+func _on_pause_button_pressed() -> void:
+	pause_menu_ui.visible = !pause_menu_ui.visible
