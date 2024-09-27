@@ -16,6 +16,8 @@ var player_scene = preload("res://Player/player.tscn")
 @onready var game_over_screen_timer: Timer = $GameOverScreenTimer
 @onready var game_over_ui: Control = $Ui/GameOver
 @onready var go_round_count: Label = $Ui/GameOver/RoundCount
+
+@onready var pause_button: Button = $Ui/PauseButton
 @onready var pause_menu_ui: Control = $Ui/PauseMenu
 
 var current_round = 0
@@ -169,3 +171,7 @@ func _on_game_over_screen_timer_timeout() -> void:
 # pause menu
 func _on_pause_button_pressed() -> void:
 	pause_menu_ui.visible = !pause_menu_ui.visible
+	pause_button.visible = !pause_menu_ui.visible
+func _on_leave_game_button_pressed() -> void:
+	Networking.close_server()
+	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")

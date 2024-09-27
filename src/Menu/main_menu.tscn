@@ -9,80 +9,48 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(128, 64)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_nmt8t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(640, 360)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nmt8t")
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -288.0
-offset_top = 2.0
-offset_right = 288.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="MainMenu/VBoxContainer"]
+[node name="Title" type="Label" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 64
 text = "ascii tanks"
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="MainMenu/VBoxContainer"]
+[node name="Spacer" type="ColorRect" parent="UI/MainMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Title2" type="Label" parent="MainMenu/VBoxContainer"]
-visible = false
+[node name="PlayButton" type="Button" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "test "
-horizontal_alignment = 1
-
-[node name="Title3" type="Label" parent="MainMenu/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "test sdfasd"
-horizontal_alignment = 1
-
-[node name="Title4" type="Label" parent="MainMenu/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "test asdasd"
-horizontal_alignment = 1
-
-[node name="PlayButton" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -91,8 +59,9 @@ theme_override_font_sizes/font_size = 32
 text = "[play]"
 flat = true
 
-[node name="CustomizeButton" type="Button" parent="MainMenu/VBoxContainer"]
+[node name="CustomizeButton" type="Button" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -101,8 +70,9 @@ theme_override_font_sizes/font_size = 32
 text = "[customize]"
 flat = true
 
-[node name="SettingsButton" type="Button" parent="MainMenu/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -111,8 +81,9 @@ theme_override_font_sizes/font_size = 32
 text = "[settings]"
 flat = true
 
-[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="UI/MainMenu/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -121,9 +92,9 @@ theme_override_font_sizes/font_size = 32
 text = "[quit]"
 flat = true
 
-[node name="HostJoinBrowser" type="Control" parent="."]
+[node name="HostJoinBrowser" type="Control" parent="UI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -131,87 +102,77 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HostJoinBrowser"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HostJoinBrowser"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = 50.0
-offset_right = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="Title" type="Label" parent="HostJoinBrowser/VBoxContainer"]
+[node name="Title" type="Label" parent="UI/HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 48
 text = "server browser"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Spacer2" type="ColorRect" parent="HostJoinBrowser/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/HostJoinBrowser/VBoxContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 0)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HostJoinBrowser/VBoxContainer"]
-custom_minimum_size = Vector2(0, 450)
-layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Servers" type="VBoxContainer" parent="HostJoinBrowser/VBoxContainer/ScrollContainer"]
+[node name="Servers" type="VBoxContainer" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ServerButton" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton2" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton2" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton3" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton3" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton4" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton4" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton5" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton5" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton6" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton6" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton7" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton7" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton8" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton8" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton9" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton9" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton10" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton10" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="ServerButton11" parent="HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
+[node name="ServerButton11" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
 layout_mode = 2
 
-[node name="Spacer" type="ColorRect" parent="HostJoinBrowser/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+[node name="Buttons" type="HBoxContainer" parent="UI/HostJoinBrowser/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-color = Color(0, 0, 0, 0)
-
-[node name="Buttons" type="HBoxContainer" parent="HostJoinBrowser/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="JoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="JoinButton" type="Button" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
 visible = false
 layout_mode = 2
 focus_mode = 0
@@ -222,28 +183,37 @@ theme_override_font_sizes/font_size = 32
 text = "[join]"
 flat = true
 
-[node name="IPAddress" type="LineEdit" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="IPAddress" type="LineEdit" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
 text = "localhost"
 placeholder_text = "ip address"
 alignment = 1
 
-[node name="Port" type="LineEdit" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="Port" type="LineEdit" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
 text = "4242"
 placeholder_text = "port"
 alignment = 1
 
-[node name="DirectJoinButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="DirectJoinButton" type="Button" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -252,8 +222,9 @@ theme_override_font_sizes/font_size = 32
 text = "[direct join]"
 flat = true
 
-[node name="HostButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="HostButton" type="Button" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -262,8 +233,9 @@ theme_override_font_sizes/font_size = 32
 text = "[host]"
 flat = true
 
-[node name="BackButton" type="Button" parent="HostJoinBrowser/VBoxContainer/Buttons"]
+[node name="BackButton" type="Button" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -272,9 +244,9 @@ theme_override_font_sizes/font_size = 32
 text = "[back]"
 flat = true
 
-[node name="Lobby" type="Control" parent="."]
+[node name="Lobby" type="Control" parent="UI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -282,321 +254,38 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Lobby"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Lobby"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_right = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="Title" type="Label" parent="Lobby/VBoxContainer"]
+[node name="Title" type="Label" parent="UI/Lobby/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 48
 text = "lobby"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayersGrid" type="GridContainer" parent="Lobby/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+[node name="Spacer" type="Control" parent="UI/Lobby/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Player" type="CharacterBody2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(300, 150)
-motion_mode = 1
-
-[node name="MoveTimer" type="Timer" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-offset_left = -67.0
-offset_top = -50.0
-offset_right = 67.0
-offset_bottom = -5.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label2" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-offset_left = -67.0
-offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label3" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-offset_left = -21.0
-offset_top = -23.0
-offset_right = 113.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "#######"
-
-[node name="CustomLetter" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-offset_left = -54.0
-offset_top = -23.0
-offset_right = 80.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "H"
-
-[node name="IsReady" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player"]
-offset_left = -38.0
-offset_top = 44.0
-offset_right = 34.0
-offset_bottom = 78.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "ready"
-
-[node name="Player2" type="CharacterBody2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(754, 142)
-motion_mode = 1
-
-[node name="MoveTimer" type="Timer" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-offset_left = -67.0
-offset_top = -50.0
-offset_right = 67.0
-offset_bottom = -5.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label2" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-offset_left = -67.0
-offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label3" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-offset_left = -21.0
-offset_top = -23.0
-offset_right = 113.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "#######"
-
-[node name="CustomLetter" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-offset_left = -54.0
-offset_top = -23.0
-offset_right = 80.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "H"
-
-[node name="IsReady" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player2"]
-offset_left = -39.0
-offset_top = 42.0
-offset_right = 33.0
-offset_bottom = 76.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "ready"
-
-[node name="Player3" type="CharacterBody2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(287, 334)
-motion_mode = 1
-
-[node name="MoveTimer" type="Timer" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-offset_left = -67.0
-offset_top = -50.0
-offset_right = 67.0
-offset_bottom = -5.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label2" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-offset_left = -67.0
-offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label3" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-offset_left = -21.0
-offset_top = -23.0
-offset_right = 113.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "#######"
-
-[node name="CustomLetter" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-offset_left = -54.0
-offset_top = -23.0
-offset_right = 80.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "H"
-
-[node name="IsReady" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player3"]
-offset_left = -37.0
-offset_top = 43.0
-offset_right = 35.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "ready"
-
-[node name="Player4" type="CharacterBody2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(746, 318)
-motion_mode = 1
-
-[node name="MoveTimer" type="Timer" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-offset_left = -67.0
-offset_top = -50.0
-offset_right = 67.0
-offset_bottom = -5.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label2" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-offset_left = -67.0
-offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label3" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-offset_left = -21.0
-offset_top = -23.0
-offset_right = 113.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "#######"
-
-[node name="CustomLetter" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-offset_left = -54.0
-offset_top = -23.0
-offset_right = 80.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "H"
-
-[node name="IsReady" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Player4"]
-offset_left = -25.0
-offset_top = 46.0
-offset_right = 47.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "ready"
-
-[node name="Placeholder1" type="Node2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(288, 124)
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Placeholder1"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "x"
-
-[node name="Placeholder2" type="Node2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(750, 119)
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Placeholder2"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "x"
-
-[node name="Placeholder3" type="Node2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(276, 309)
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Placeholder3"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "x"
-
-[node name="Placeholder4" type="Node2D" parent="Lobby/VBoxContainer/PlayersGrid"]
-position = Vector2(742, 296)
-
-[node name="Label" type="Label" parent="Lobby/VBoxContainer/PlayersGrid/Placeholder4"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "x"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Lobby/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="UI/Lobby/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="ReadyButton" type="Button" parent="Lobby/VBoxContainer/HBoxContainer"]
+[node name="ReadyButton" type="Button" parent="UI/Lobby/VBoxContainer/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -606,8 +295,9 @@ toggle_mode = true
 text = "[ready]"
 flat = true
 
-[node name="LeaveButton" type="Button" parent="Lobby/VBoxContainer/HBoxContainer"]
+[node name="LeaveButton" type="Button" parent="UI/Lobby/VBoxContainer/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -617,7 +307,7 @@ text = "[leave]
 "
 flat = true
 
-[node name="StartCountdownContainer" type="VBoxContainer" parent="Lobby"]
+[node name="StartCountdownContainer" type="VBoxContainer" parent="UI/Lobby"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -627,7 +317,7 @@ grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Lobby/StartCountdownContainer"]
+[node name="Title" type="Label" parent="UI/Lobby/StartCountdownContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
@@ -635,7 +325,7 @@ theme_override_font_sizes/font_size = 32
 text = "starting in:"
 horizontal_alignment = 1
 
-[node name="StartCountdown" type="Label" parent="Lobby/StartCountdownContainer"]
+[node name="StartCountdown" type="Label" parent="UI/Lobby/StartCountdownContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
@@ -643,114 +333,55 @@ theme_override_font_sizes/font_size = 32
 text = "5"
 horizontal_alignment = 1
 
-[node name="ReadyCooldownTimer" type="Timer" parent="Lobby"]
+[node name="ReadyCooldownTimer" type="Timer" parent="UI/Lobby"]
 wait_time = 2.0
 one_shot = true
 
-[node name="StartCountdownTimer" type="Timer" parent="Lobby"]
+[node name="StartCountdownTimer" type="Timer" parent="UI/Lobby"]
 
-[node name="Customize" type="Control" parent="."]
+[node name="Customize" type="Control" parent="UI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Customize"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Customize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_right = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-alignment = 1
 
-[node name="Title" type="Label" parent="Customize/VBoxContainer"]
+[node name="Title" type="Label" parent="UI/Customize/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 48
 text = "customize"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Player" type="CharacterBody2D" parent="Customize/VBoxContainer"]
-position = Vector2(540, 320)
-motion_mode = 1
+[node name="Spacer" type="Control" parent="UI/Customize/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="MoveTimer" type="Timer" parent="Customize/VBoxContainer/Player"]
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Customize/VBoxContainer/Player"]
-shape = SubResource("RectangleShape2D_dvtrj")
-
-[node name="Label" type="Label" parent="Customize/VBoxContainer/Player"]
-offset_left = -67.0
-offset_top = -50.0
-offset_right = 67.0
-offset_bottom = -5.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label2" type="Label" parent="Customize/VBoxContainer/Player"]
-offset_left = -67.0
-offset_top = 5.0
-offset_right = 67.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "~ ~ ~ ~"
-
-[node name="Label3" type="Label" parent="Customize/VBoxContainer/Player"]
-offset_left = -21.0
-offset_top = -23.0
-offset_right = 113.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "#######"
-
-[node name="CustomLetter" type="Label" parent="Customize/VBoxContainer/Player"]
-offset_left = -54.0
-offset_top = -23.0
-offset_right = 80.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 32
-text = "H"
-
-[node name="IsReady" type="Label" parent="Customize/VBoxContainer/Player"]
-offset_left = -38.0
-offset_top = 44.0
-offset_right = 34.0
-offset_bottom = 78.0
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "ready"
-
-[node name="PlayersGrid" type="GridContainer" parent="Customize/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Customize/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Customize/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 25
 alignment = 1
 
-[node name="ChooseColorButton" type="Button" parent="Customize/VBoxContainer/HBoxContainer"]
+[node name="ChooseColorButton" type="Button" parent="UI/Customize/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
@@ -760,31 +391,38 @@ text = "[color]
 "
 flat = true
 
-[node name="Label" type="Label" parent="Customize/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="UI/Customize/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
-text = "custom letter:"
 
-[node name="CustomLetter" type="LineEdit" parent="Customize/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/Customize/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "letter:"
+
+[node name="CustomLetter" type="LineEdit" parent="UI/Customize/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 60)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
 text = "H"
 alignment = 1
 max_length = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Customize/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Customize/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="CBackButton" type="Button" parent="Customize/VBoxContainer/HBoxContainer2"]
+[node name="CBackButton" type="Button" parent="UI/Customize/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -795,12 +433,17 @@ text = "[back]
 "
 flat = true
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Settings" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Popups" type="CenterContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -809,13 +452,31 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Popup1" type="Control" parent="Popups"]
+[node name="Title" type="Label" parent="UI/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 48
+text = "settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popups" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Popup1" type="Control" parent="UI/Popups"]
 visible = false
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Popups/Popup1"]
+[node name="ColorRect" type="ColorRect" parent="UI/Popups/Popup1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -831,7 +492,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.945098, 0.952941, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Popups/Popup1"]
+[node name="ColorRect2" type="ColorRect" parent="UI/Popups/Popup1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -847,7 +508,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.176471, 0.164706, 0.180392, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popup1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Popups/Popup1"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -861,7 +522,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Text" type="Label" parent="Popups/Popup1/VBoxContainer"]
+[node name="Text" type="Label" parent="UI/Popups/Popup1/VBoxContainer"]
 custom_minimum_size = Vector2(100, 34)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
@@ -871,7 +532,7 @@ text = "adas ajkdadjnkaskd"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PopupCloseButton" type="Button" parent="Popups/Popup1/VBoxContainer"]
+[node name="PopupCloseButton" type="Button" parent="UI/Popups/Popup1/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -883,23 +544,421 @@ theme_override_font_sizes/font_size = 24
 text = "[close]"
 flat = true
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/CustomizeButton" to="." method="_on_customize_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/Buttons/DirectJoinButton" to="." method="_on_direct_join_button_pressed"]
-[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/Buttons/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="HostJoinBrowser/VBoxContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="timeout" from="Lobby/VBoxContainer/PlayersGrid/Player/MoveTimer" to="Lobby/VBoxContainer/PlayersGrid/Player" method="_on_move_timer_timeout"]
-[connection signal="timeout" from="Lobby/VBoxContainer/PlayersGrid/Player2/MoveTimer" to="Lobby/VBoxContainer/PlayersGrid/Player2" method="_on_move_timer_timeout"]
-[connection signal="timeout" from="Lobby/VBoxContainer/PlayersGrid/Player3/MoveTimer" to="Lobby/VBoxContainer/PlayersGrid/Player3" method="_on_move_timer_timeout"]
-[connection signal="timeout" from="Lobby/VBoxContainer/PlayersGrid/Player4/MoveTimer" to="Lobby/VBoxContainer/PlayersGrid/Player4" method="_on_move_timer_timeout"]
-[connection signal="toggled" from="Lobby/VBoxContainer/HBoxContainer/ReadyButton" to="." method="_on_ready_button_toggled"]
-[connection signal="pressed" from="Lobby/VBoxContainer/HBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]
-[connection signal="timeout" from="Lobby/ReadyCooldownTimer" to="." method="_on_ready_cooldown_timer_timeout"]
-[connection signal="timeout" from="Lobby/StartCountdownTimer" to="." method="_on_start_countdown_timer_timeout"]
-[connection signal="timeout" from="Customize/VBoxContainer/Player/MoveTimer" to="Customize/VBoxContainer/Player" method="_on_move_timer_timeout"]
-[connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
-[connection signal="text_changed" from="Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
-[connection signal="pressed" from="Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]
-[connection signal="pressed" from="Popups/Popup1/VBoxContainer/PopupCloseButton" to="." method="_on_popup_close_button_pressed"]
+[node name="LobbyPlayersGrid" type="Node2D" parent="."]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="LobbyPlayersGrid"]
+position = Vector2(426, 240)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="LobbyPlayersGrid/Player"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyPlayersGrid/Player"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Player"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="LobbyPlayersGrid/Player"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="LobbyPlayersGrid/Player"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="LobbyPlayersGrid/Player"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="LobbyPlayersGrid/Player"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 75.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+horizontal_alignment = 1
+
+[node name="Player2" type="CharacterBody2D" parent="LobbyPlayersGrid"]
+position = Vector2(852, 240)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="LobbyPlayersGrid/Player2"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyPlayersGrid/Player2"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Player2"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="LobbyPlayersGrid/Player2"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="LobbyPlayersGrid/Player2"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="LobbyPlayersGrid/Player2"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="LobbyPlayersGrid/Player2"]
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 75.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+horizontal_alignment = 1
+
+[node name="Player3" type="CharacterBody2D" parent="LobbyPlayersGrid"]
+position = Vector2(426, 480)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="LobbyPlayersGrid/Player3"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyPlayersGrid/Player3"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Player3"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="LobbyPlayersGrid/Player3"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="LobbyPlayersGrid/Player3"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="LobbyPlayersGrid/Player3"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="LobbyPlayersGrid/Player3"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 75.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+horizontal_alignment = 1
+
+[node name="Player4" type="CharacterBody2D" parent="LobbyPlayersGrid"]
+position = Vector2(852, 480)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="LobbyPlayersGrid/Player4"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyPlayersGrid/Player4"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Player4"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="LobbyPlayersGrid/Player4"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="LobbyPlayersGrid/Player4"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="LobbyPlayersGrid/Player4"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="LobbyPlayersGrid/Player4"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 75.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+horizontal_alignment = 1
+
+[node name="Placeholder1" type="Node2D" parent="LobbyPlayersGrid"]
+position = Vector2(426, 240)
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Placeholder1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="Placeholder2" type="Node2D" parent="LobbyPlayersGrid"]
+position = Vector2(852, 240)
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Placeholder2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="Placeholder3" type="Node2D" parent="LobbyPlayersGrid"]
+position = Vector2(426, 480)
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Placeholder3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="Placeholder4" type="Node2D" parent="LobbyPlayersGrid"]
+position = Vector2(852, 480)
+
+[node name="Label" type="Label" parent="LobbyPlayersGrid/Placeholder4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="CustomizeUIPlayer" type="CharacterBody2D" parent="."]
+visible = false
+position = Vector2(640, 300)
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="CustomizeUIPlayer"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomizeUIPlayer"]
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="Label" type="Label" parent="CustomizeUIPlayer"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label2" type="Label" parent="CustomizeUIPlayer"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "~ ~ ~ ~"
+
+[node name="Label3" type="Label" parent="CustomizeUIPlayer"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "#######"
+
+[node name="CustomLetter" type="Label" parent="CustomizeUIPlayer"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "H"
+
+[node name="IsReady" type="Label" parent="CustomizeUIPlayer"]
+visible = false
+offset_left = -38.0
+offset_top = 44.0
+offset_right = 34.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 24
+text = "ready"
+
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/CustomizeButton" to="." method="_on_customize_button_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UI/HostJoinBrowser/VBoxContainer/Buttons/DirectJoinButton" to="." method="_on_direct_join_button_pressed"]
+[connection signal="pressed" from="UI/HostJoinBrowser/VBoxContainer/Buttons/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="UI/HostJoinBrowser/VBoxContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="UI/Lobby/VBoxContainer/Buttons/ReadyButton" to="." method="_on_ready_button_toggled"]
+[connection signal="pressed" from="UI/Lobby/VBoxContainer/Buttons/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="timeout" from="UI/Lobby/ReadyCooldownTimer" to="." method="_on_ready_cooldown_timer_timeout"]
+[connection signal="timeout" from="UI/Lobby/StartCountdownTimer" to="." method="_on_start_countdown_timer_timeout"]
+[connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
+[connection signal="text_changed" from="UI/Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
+[connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]
+[connection signal="pressed" from="UI/Popups/Popup1/VBoxContainer/PopupCloseButton" to="." method="_on_popup_close_button_pressed"]
+[connection signal="timeout" from="LobbyPlayersGrid/Player/MoveTimer" to="LobbyPlayersGrid/Player" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="LobbyPlayersGrid/Player2/MoveTimer" to="LobbyPlayersGrid/Player2" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="LobbyPlayersGrid/Player3/MoveTimer" to="LobbyPlayersGrid/Player3" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="LobbyPlayersGrid/Player4/MoveTimer" to="LobbyPlayersGrid/Player4" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="CustomizeUIPlayer/MoveTimer" to="CustomizeUIPlayer" method="_on_move_timer_timeout"]

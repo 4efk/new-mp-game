@@ -1,26 +1,26 @@
-extends Control
+extends Node2D
 
 var server_browser_server_button = preload("res://Menu/ServerBrowser/sb_server_button.tscn")
 
-@onready var main_menu: Control = $MainMenu
+@onready var main_menu: Control = $UI/MainMenu
 
-@onready var host_join_browser: Control = $HostJoinBrowser
-@onready var ip_address_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/IPAddress
-@onready var port_lineedit: LineEdit = $HostJoinBrowser/VBoxContainer/Buttons/Port
-@onready var server_list: VBoxContainer = $HostJoinBrowser/VBoxContainer/ScrollContainer/Servers
+@onready var host_join_browser: Control = $UI/HostJoinBrowser
+@onready var ip_address_lineedit: LineEdit = $UI/HostJoinBrowser/VBoxContainer/Buttons/IPAddress
+@onready var port_lineedit: LineEdit = $UI/HostJoinBrowser/VBoxContainer/Buttons/Port
+@onready var server_list: VBoxContainer = $UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers
 
 
-@onready var lobby: Control = $Lobby
-@onready var players_grid: GridContainer = $Lobby/VBoxContainer/PlayersGrid
-@onready var v_box_container: VBoxContainer = $Lobby/VBoxContainer
-@onready var ready_button: Button = $Lobby/VBoxContainer/HBoxContainer/ReadyButton
-@onready var ready_cooldown_timer: Timer = $Lobby/ReadyCooldownTimer
-@onready var start_countdown_timer: Timer = $Lobby/StartCountdownTimer
-@onready var start_countdown: Label = $Lobby/StartCountdownContainer/StartCountdown
+@onready var lobby: Control = $UI/Lobby
+@onready var players_grid: Node2D = $LobbyPlayersGrid
+@onready var v_box_container: VBoxContainer = $UI/Lobby/VBoxContainer
+@onready var ready_button: Button = $UI/Lobby/VBoxContainer/Buttons/ReadyButton
+@onready var ready_cooldown_timer: Timer = $UI/Lobby/ReadyCooldownTimer
+@onready var start_countdown_timer: Timer = $UI/Lobby/StartCountdownTimer
+@onready var start_countdown: Label = $UI/Lobby/StartCountdownContainer/StartCountdown
 
-@onready var customize_ui: Control = $Customize
-@onready var customize_ui_player: CharacterBody2D = $Customize/VBoxContainer/Player
-@onready var customize_ui_custom_letter_lineedit: LineEdit = $Customize/VBoxContainer/HBoxContainer/CustomLetter
+@onready var customize_ui: Control = $UI/Customize
+@onready var customize_ui_player: CharacterBody2D = $CustomizeUIPlayer
+@onready var customize_ui_custom_letter_lineedit: LineEdit = $UI/Customize/VBoxContainer/HBoxContainer/CustomLetter
 
 var can_change_ready = true
 var start_timer = 5
@@ -63,6 +63,8 @@ func _process(delta: float) -> void:
 			#server_button.queue_free()
 	
 	# lobby ui
+	players_grid.visible = lobby.visible
+	
 	for node in players_grid.get_children():
 		if str(node.name).begins_with('Player'):
 			node.hide()
@@ -90,7 +92,10 @@ func _process(delta: float) -> void:
 	
 	start_countdown.get_parent().visible = !start_countdown_timer.is_stopped()
 	start_countdown.text = str(start_timer)
-
+	
+	#customize ui
+	customize_ui_player.visible = customize_ui.visible
+	
 func connected_to_server():
 	host_join_browser.hide()
 	lobby.show()
@@ -166,8 +171,8 @@ func _on_c_back_button_pressed() -> void:
 
 # popups stuff
 func show_popup(msg):
-	get_node("Popups/Popup1").show()
-	get_node("Popups/Popup1/VBoxContainer/Text").text = msg
+	get_node("UI/Popups/Popup1").show()
+	get_node("UI/Popups/Popup1/VBoxContainer/Text").text = msg
 
 func _on_popup_close_button_pressed() -> void:
-	get_node("Popups/Popup1").hide()
+	get_node("UI/Popups/Popup1").hide()

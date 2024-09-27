@@ -268,62 +268,42 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="Ui"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect3" type="ColorRect" parent="Ui/PauseMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -474.0
-offset_top = -264.0
-offset_right = 474.0
-offset_bottom = 264.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 0.945098, 0.952941, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Ui/PauseMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -471.0
-offset_top = -261.0
-offset_right = 471.0
-offset_bottom = 261.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.176471, 0.164706, 0.180392, 1)
 
-[node name="Label" type="Label" parent="Ui/PauseMenu/ColorRect2"]
+[node name="Label" type="Label" parent="Ui/PauseMenu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -211.0
 offset_right = 211.0
-offset_bottom = 164.0
+offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
 theme_override_fonts/font = ExtResource("2_2mgga")
-theme_override_font_sizes/font_size = 32
-text = "pausijng menu broether"
+theme_override_font_sizes/font_size = 48
+text = "pause menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui/PauseMenu/ColorRect2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui/PauseMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -332,7 +312,17 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="LeaveGameButton" type="Button" parent="Ui/PauseMenu/ColorRect2/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="Ui/PauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_font_sizes/font_size = 32
+text = "[resume]"
+flat = true
+
+[node name="LeaveGameButton" type="Button" parent="Ui/PauseMenu/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
@@ -340,16 +330,6 @@ theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_font_sizes/font_size = 32
 text = "[leave]"
-flat = true
-
-[node name="PauseButton2" type="Button" parent="Ui/PauseMenu/ColorRect2/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
-theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
-theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
-theme_override_font_sizes/font_size = 32
-text = "[pause]"
 flat = true
 
 [node name="PauseButton" type="Button" parent="Ui"]
@@ -361,9 +341,21 @@ focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)
 theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_outline_color = Color(0.176471, 0.164706, 0.180392, 1)
 theme_override_font_sizes/font_size = 32
 text = "[pause]"
 flat = true
+
+[node name="ButtonBackground" type="ColorRect" parent="Ui/PauseButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.176471, 0.164706, 0.180392, 1)
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -506,5 +498,7 @@ one_shot = true
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/MoveOptions/MoveButton2" to="." method="_on_move_button_2_pressed"]
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/MoveOptions/MoveButton3" to="." method="_on_move_button_3_pressed"]
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/MoveOptions/MoveButton4" to="." method="_on_move_button_4_pressed"]
+[connection signal="pressed" from="Ui/PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Ui/PauseMenu/VBoxContainer/LeaveGameButton" to="." method="_on_leave_game_button_pressed"]
 [connection signal="pressed" from="Ui/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="GameOverScreenTimer" to="." method="_on_game_over_screen_timer_timeout"]

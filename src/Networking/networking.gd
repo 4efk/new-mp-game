@@ -87,6 +87,8 @@ func handle_warning(msg):
 func close_server():
 	multiplayer.multiplayer_peer = null
 	connected_players = {}
+	GlobalScript.self_player_info = GlobalScript.DEFAULT_PLAYER_INFO.duplicate()
+	GlobalScript.apply_settings()
 	broadcast_timer.stop()
 	broadcaster = null
 
