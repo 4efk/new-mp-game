@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://2unws7tipg78"]
+[gd_scene load_steps=8 format=3 uid="uid://2unws7tipg78"]
 
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="1_16r03"]
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_nmt8t"]
 [ext_resource type="PackedScene" uid="uid://dx1d8plcirj2f" path="res://Menu/ServerBrowser/sb_server_button.tscn" id="3_53wn7"]
 [ext_resource type="StyleBox" uid="uid://bp4lcb44bdeo2" path="res://Menu/style_lineedit_focused.tres" id="4_5wy08"]
 [ext_resource type="StyleBox" uid="uid://xtakhswp08ox" path="res://Menu/style_lineedit_normal.tres" id="5_jkffx"]
+[ext_resource type="AudioStream" uid="uid://h5q4fhw8er8r" path="res://Audio/Music/menu_music_1.wav" id="6_majfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(128, 64)
@@ -941,6 +942,11 @@ theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
 theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 24
 text = "ready"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_majfq")
+volume_db = -10.0
+bus = &"Music"
 
 [connection signal="pressed" from="UI/MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/MainMenu/VBoxContainer/CustomizeButton" to="." method="_on_customize_button_pressed"]

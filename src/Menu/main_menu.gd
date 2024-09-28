@@ -22,6 +22,8 @@ var server_browser_server_button = preload("res://Menu/ServerBrowser/sb_server_b
 @onready var customize_ui_player: CharacterBody2D = $CustomizeUIPlayer
 @onready var customize_ui_custom_letter_lineedit: LineEdit = $UI/Customize/VBoxContainer/HBoxContainer/CustomLetter
 
+@onready var menu_music_player: AudioStreamPlayer = $MenuMusic
+
 var can_change_ready = true
 var start_timer = 5
 
@@ -41,6 +43,10 @@ func _ready() -> void:
 	customize_ui_custom_letter_lineedit.text = GlobalScript.settings['player_custom_letter']
 
 func _process(delta: float) -> void:
+	# music
+	if !menu_music_player.playing:
+		menu_music_player.play()
+	
 	# server browser ui
 	var available_servers_names_reformatted = []
 	var available_servers_key_strings = []

@@ -20,6 +20,8 @@ var player_scene = preload("res://Player/player.tscn")
 @onready var pause_button: Button = $Ui/PauseButton
 @onready var pause_menu_ui: Control = $Ui/PauseMenu
 
+@onready var game_music_player: AudioStreamPlayer = $GameMusic
+
 var current_round = 0
 var game_finished = false
 var currently_playing_moves = false
@@ -42,6 +44,10 @@ func _ready() -> void:
 	Networking.in_game = true
 
 func _process(delta: float) -> void:
+	# music
+	if !game_music_player.playing:
+		game_music_player.play()
+	
 	if Input.is_action_just_pressed("pause"):
 		_on_pause_button_pressed()
 	

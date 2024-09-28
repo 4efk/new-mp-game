@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwu33jyakwu12"]
+[gd_scene load_steps=9 format=3 uid="uid://cwu33jyakwu12"]
 
 [ext_resource type="Script" path="res://World/game.gd" id="1_8juat"]
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="2_2mgga"]
 [ext_resource type="PackedScene" uid="uid://b2a4q5ysp3vgj" path="res://Player/player.tscn" id="3_2yun1"]
 [ext_resource type="Script" path="res://Player/player_winner.gd" id="4_083j5"]
+[ext_resource type="AudioStream" uid="uid://dx6shgqe2pc0" path="res://Audio/Music/game_music_1.wav" id="5_gggvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncn15"]
 size = Vector2(1920, 40)
@@ -491,6 +492,11 @@ one_shot = true
 [node name="GameOverScreenTimer" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gggvv")
+volume_db = -5.0
+bus = &"Music"
 
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/ConfirmMove/MoveConfirmButton" to="." method="_on_move_confirm_button_pressed"]
 [connection signal="pressed" from="Ui/SelectMove/VBoxContainer/MoveOptions/MoveButton0" to="." method="_on_move_button_pressed"]
