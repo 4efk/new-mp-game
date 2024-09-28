@@ -9,16 +9,19 @@ var player_scene = preload("res://Player/player.tscn")
 @onready var bullets: Node = $Bullets
 
 @onready var move_timer: Timer = $MoveTimer
-@onready var move_options_buttons: HBoxContainer = $Ui/SelectMove/VBoxContainer/MoveOptions
-@onready var selected_move_label: Label = $Ui/SelectedMove/SelectedMove
-@onready var select_move_ui: Control = $Ui/SelectMove
-@onready var spectating_info_ui: Control = $Ui/SpectatingInfo
+@onready var move_options_buttons: HBoxContainer = $UI/SelectMove/VBoxContainer/VBoxContainer/MoveOptions
+@onready var selected_move_label: Label = $UI/SelectedMove/SelectedMove
+@onready var select_move_ui: Control = $UI/SelectMove
+@onready var spectating_info_ui: Control = $UI/SpectatingInfo
 @onready var game_over_screen_timer: Timer = $GameOverScreenTimer
-@onready var game_over_ui: Control = $Ui/GameOver
-@onready var go_round_count: Label = $Ui/GameOver/RoundCount
+@onready var game_over_ui: Control = $UI/GameOver
+@onready var go_round_count: Label = $UI/GameOver/VBoxContainer/RoundCount
+@onready var go_winner_player: CharacterBody2D = $WinnerPlayer
+@onready var go_winner_label: Label = $UI/GameOver/VBoxContainer/WinnerLabel
+@onready var go_draw_label: Label = $UI/GameOver/VBoxContainer/DrawLabel
 
-@onready var pause_button: Button = $Ui/PauseButton
-@onready var pause_menu_ui: Control = $Ui/PauseMenu
+@onready var pause_button: Button = $UI/PauseButton
+@onready var pause_menu_ui: Control = $UI/PauseMenu
 
 @onready var game_music_player: AudioStreamPlayer = $GameMusic
 
@@ -114,6 +117,7 @@ func game_over():
 	select_move_ui.hide()
 	spectating_info_ui.hide()
 	selected_move_label.get_parent().hide()
+	pause_button.hide()
 	game_over_ui.show()
 	$Borders.hide()
 	go_round_count.text = 'turns: ' + str(current_round)
@@ -122,11 +126,12 @@ func game_over():
 		if Networking.connected_players[player]['alive']:
 			winner = player
 	if winner:
-		game_over_ui.get_node('Winner').show()
-		game_over_ui.get_node('Winner/WinnerPlayer').get_node('CustomLetter').text = Networking.connected_players[winner]['custom_letter']
-		game_over_ui.get_node('Winner/WinnerPlayer').modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[winner]['color']]
+		go_winner_label.show()
+		go_winner_player.show()
+		go_winner_player.get_node('CustomLetter').text = Networking.connected_players[winner]['custom_letter']
+		go_winner_player.modulate = GlobalScript.PLAYER_COLORS[Networking.connected_players[winner]['color']]
 	else:
-		game_over_ui.get_node('Draw').show()
+		go_draw_label.show()
 	game_over_screen_timer.start()
 
 # move select buttons
