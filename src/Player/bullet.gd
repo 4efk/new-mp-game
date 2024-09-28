@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 		elif bounces_left <= 0:
 			queue_free()
+			AudioController.get_node("BulletDie").play()
 		else:
 			bounces_left -= 1
 			direction = direction.bounce(collision.get_normal())
+			AudioController.get_node("BulletBounce").play()

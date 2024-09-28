@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b35wj5xkkkfnu"]
+
+[ext_resource type="Script" path="res://Other/audio_controller.gd" id="1_mn55d"]
+[ext_resource type="AudioStream" uid="uid://0ebophy1ijqg" path="res://Audio/SFX/shoot_2.wav" id="2_sjofh"]
+[ext_resource type="AudioStream" uid="uid://dpeyd43ufvbje" path="res://Audio/SFX/explosion_2.wav" id="3_01it2"]
+[ext_resource type="AudioStream" uid="uid://d130n3edif1ra" path="res://Audio/SFX/shoot_1.wav" id="4_2ycw0"]
+[ext_resource type="AudioStream" uid="uid://c5sevuvwyu2v2" path="res://Audio/SFX/hit_1.wav" id="5_t8bsx"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_mn55d")
+
+[node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sjofh")
+bus = &"SFX"
+
+[node name="PlayerDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_01it2")
+bus = &"SFX"
+
+[node name="BulletBounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2ycw0")
+bus = &"SFX"
+
+[node name="BulletDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t8bsx")
+bus = &"SFX"

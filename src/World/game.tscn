@@ -297,6 +297,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WinnerLabel" type="Label" parent="UI/GameOver/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.976471, 0.8, 0.423529, 1)
@@ -306,9 +307,14 @@ text = "winner:"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DrawLabel" type="Label" parent="UI/GameOver/VBoxContainer"]
+[node name="DrawLabel" type="Label" parent="UI/GameOver"]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.976471, 0.8, 0.423529, 1)
 theme_override_fonts/font = ExtResource("2_2mgga")
 theme_override_font_sizes/font_size = 32

@@ -18,7 +18,7 @@ var player_scene = preload("res://Player/player.tscn")
 @onready var go_round_count: Label = $UI/GameOver/VBoxContainer/RoundCount
 @onready var go_winner_player: CharacterBody2D = $WinnerPlayer
 @onready var go_winner_label: Label = $UI/GameOver/VBoxContainer/WinnerLabel
-@onready var go_draw_label: Label = $UI/GameOver/VBoxContainer/DrawLabel
+@onready var go_draw_label: Label = $UI/GameOver/DrawLabel
 
 @onready var pause_button: Button = $UI/PauseButton
 @onready var pause_menu_ui: Control = $UI/PauseMenu

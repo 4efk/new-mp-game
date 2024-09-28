@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="3_pnuyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
-size = Vector2(128, 64)
+size = Vector2(136, 64)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -14,6 +14,7 @@ script = ExtResource("1_j6tew")
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_dvtrj")
 
 [node name="LeftTrack" type="Label" parent="."]

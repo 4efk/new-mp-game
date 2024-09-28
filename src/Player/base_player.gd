@@ -35,11 +35,14 @@ func move_shoot():
 	bullet_instance.get_node('Letter').text = get_node("CustomLetter").text
 	bullet_instance.modulate = modulate
 	get_parent().get_parent().get_node('Bullets').add_child(bullet_instance)
+	AudioController.get_node("PlayerShoot").play()
 
 func hit():
+	print(1)
 	Networking.connected_players[int(str(name))]['alive'] = false
 	if multiplayer.is_server():
 		Networking.send_all_info_to_clients()
+	AudioController.get_node("PlayerDie").play()
 	queue_free()
 
 func _ready() -> void:
@@ -47,11 +50,11 @@ func _ready() -> void:
 		Networking.connected_players[int(str(name))]['transforms'] = [global_position, rotation]
 
 func _physics_process(delta: float) -> void:
-	if move_timer.is_stopped():
-		return
-	
 	if multiplayer.is_server():
 		Networking.connected_players[int(str(name))]['transforms'] = [global_position, rotation]
+	
+	if move_timer.is_stopped():
+		return
 	
 	velocity = Vector2(1, 0).rotated(rotation) * speed * move_direction
 	
