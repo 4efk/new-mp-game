@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Menu/ServerBrowser/sb_server_button.gd" id="1_lxgeh"]
 
 [node name="ServerButton" type="Button"]
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.521569, 0.854902, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(0.678431, 0.854902, 0.470588, 1)

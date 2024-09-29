@@ -23,6 +23,12 @@ var server_browser_server_button = preload("res://Menu/ServerBrowser/sb_server_b
 @onready var customize_ui_custom_letter_lineedit: LineEdit = $UI/Customize/VBoxContainer/HBoxContainer/CustomLetter
 
 @onready var settings_ui: Control = $UI/Settings
+@onready var settings_fps_label: Label = $UI/Settings/VBoxContainer/VBoxContainer2/Label3
+@onready var settings_fps_slider: HSlider = $UI/Settings/VBoxContainer/VBoxContainer2/FPSSlider
+@onready var sfx_volume_slider: HSlider = $UI/Settings/VBoxContainer/VBoxContainer2/SFXVolumeSlider
+@onready var music_volume_slider: HSlider = $UI/Settings/VBoxContainer/VBoxContainer2/MusicVolumeSlider
+@onready var fullscreen_check_box: CheckBox = $UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer/FullscreenCheckBox
+@onready var vsync_check_box: CheckBox = $UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer/VSyncCheckBox
 
 @onready var menu_music_player: AudioStreamPlayer = $MenuMusic
 
@@ -43,6 +49,15 @@ func _ready() -> void:
 	customize_ui_player.modulate = GlobalScript.PLAYER_COLORS[GlobalScript.settings['player_color']]
 	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
 	customize_ui_custom_letter_lineedit.text = GlobalScript.settings['player_custom_letter']
+	sfx_volume_slider.value = GlobalScript.settings['sfx_volume']
+	music_volume_slider.value = GlobalScript.settings['music_volume']
+	fullscreen_check_box.set_pressed_no_signal(GlobalScript.settings['fullscreen'])
+	vsync_check_box.set_pressed_no_signal(GlobalScript.settings['vsync'])
+	
+	# settings stuff
+	settings_fps_label.text = 'fps: ' + str(GlobalScript.FPS_VALUES[GlobalScript.settings['fps']])
+	settings_fps_slider.value = GlobalScript.settings['fps']
+	
 
 func _process(delta: float) -> void:
 	# music
@@ -66,9 +81,9 @@ func _process(delta: float) -> void:
 			server_button_instance.port = Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(available_server)]][1]
 			server_list.add_child(server_button_instance)
 	
-	#for server_button in server_list.get_children():
-		#if not server_button.name in available_servers_names_reformatted:
-			#server_button.queue_free()
+	for server_button in server_list.get_children():
+		if not server_button.name in available_servers_names_reformatted:
+			server_button.queue_free()
 	
 	# lobby ui
 	players_grid.visible = lobby.visible
@@ -104,6 +119,9 @@ func _process(delta: float) -> void:
 	#customize ui
 	customize_ui_player.visible = customize_ui.visible
 	
+	# settings ui
+	fullscreen_check_box.set_pressed_no_signal(GlobalScript.settings['fullscreen'])
+	
 func connected_to_server():
 	host_join_browser.hide()
 	lobby.show()
@@ -127,7 +145,8 @@ func _on_host_button_pressed() -> void:
 	host_join_browser.hide()
 	lobby.show()
 func _on_direct_join_button_pressed() -> void:
-	Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))# Networking.DEFAULT_GAME_PORT)
+	if (ip_address_lineedit.text.is_valid_ip_address() or ip_address_lineedit.text == 'localhost') and port_lineedit.text:
+		Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))# Networking.DEFAULT_GAME_PORT)
 func _on_back_button_pressed() -> void:
 	main_menu.show()
 	host_join_browser.hide()
@@ -182,6 +201,31 @@ func _on_c_back_button_pressed() -> void:
 func _on_settings_back_button_pressed() -> void:
 	settings_ui.hide()
 	main_menu.show()
+
+func _on_fps_slider_value_changed(value: float) -> void:
+	GlobalScript.settings['fps'] = value
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+	
+	settings_fps_label.text = 'fps: ' + str(GlobalScript.FPS_VALUES[GlobalScript.settings['fps']])
+
+func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
+	GlobalScript.settings['fullscreen'] = toggled_on
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+func _on_v_sync_check_box_toggled(toggled_on: bool) -> void:
+	GlobalScript.settings['vsync'] = toggled_on
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+
+func _on_sfx_volume_slider_value_changed(value: float) -> void:
+	GlobalScript.settings['sfx_volume'] = value
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
+func _on_music_volume_slider_value_changed(value: float) -> void:
+	GlobalScript.settings['music_volume'] = value
+	GlobalScript.apply_settings()
+	GlobalScript.save_settings()
 
 # popups stuff
 func show_popup(msg):

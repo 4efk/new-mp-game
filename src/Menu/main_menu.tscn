@@ -1,11 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://2unws7tipg78"]
+[gd_scene load_steps=21 format=3 uid="uid://2unws7tipg78"]
 
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="1_16r03"]
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_nmt8t"]
-[ext_resource type="PackedScene" uid="uid://dx1d8plcirj2f" path="res://Menu/ServerBrowser/sb_server_button.tscn" id="3_53wn7"]
 [ext_resource type="StyleBox" uid="uid://bp4lcb44bdeo2" path="res://Menu/style_lineedit_focused.tres" id="4_5wy08"]
 [ext_resource type="StyleBox" uid="uid://xtakhswp08ox" path="res://Menu/style_lineedit_normal.tres" id="5_jkffx"]
 [ext_resource type="AudioStream" uid="uid://h5q4fhw8er8r" path="res://Audio/Music/menu_music_1.wav" id="6_majfq"]
+[ext_resource type="Texture2D" uid="uid://c713vjy32522i" path="res://Textures/checkbox_2_checked.png" id="6_yqpnf"]
+[ext_resource type="Texture2D" uid="uid://ugb2pm4ueb61" path="res://Textures/checkbox_2_unchecked.png" id="7_7fj3x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phbe3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1d8i"]
+bg_color = Color(1, 0.945098, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rlfo"]
+bg_color = Color(1, 0.945098, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rc1o"]
+bg_color = Color(1, 0.945098, 0.952941, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vi1sf"]
+thickness = 16
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_17g5j"]
+thickness = 16
+vertical = true
+
+[sub_resource type="Theme" id="Theme_8vwvu"]
+CheckBox/icons/checked = null
+CheckBox/styles/normal = SubResource("StyleBoxFlat_phbe3")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_a1d8i")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_0rlfo")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_4rc1o")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_vi1sf")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_17g5j")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7nc5b"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ndeq7"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5o5nt"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 16
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_443ij"]
+color = Color(1, 1, 1, 1)
+thickness = 16
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nd2ca"]
+color = Color(1, 0.945098, 0.952941, 1)
+thickness = 16
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(128, 64)
@@ -19,7 +67,6 @@ offset = Vector2(640, 360)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,6 +172,7 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/HostJoinBrowser/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_8vwvu")
 horizontal_scroll_mode = 0
 
 [node name="Servers" type="VBoxContainer" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer"]
@@ -132,39 +180,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-
-[node name="ServerButton" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton2" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton3" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton4" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton5" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton6" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton7" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton8" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton9" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton10" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
-
-[node name="ServerButton11" parent="UI/HostJoinBrowser/VBoxContainer/ScrollContainer/Servers" instance=ExtResource("3_53wn7")]
-layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="UI/HostJoinBrowser/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -195,7 +210,6 @@ theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
-text = "localhost"
 placeholder_text = "ip address"
 alignment = 1
 
@@ -209,7 +223,7 @@ theme_override_fonts/font = ExtResource("1_16r03")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = ExtResource("4_5wy08")
 theme_override_styles/normal = ExtResource("5_jkffx")
-text = "4242"
+text = "4441"
 placeholder_text = "port"
 alignment = 1
 
@@ -436,6 +450,7 @@ text = "[back]
 flat = true
 
 [node name="Settings" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -467,6 +482,121 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
+
+[node name="Label" type="Label" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "sfx volume:"
+horizontal_alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_7nc5b")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_ndeq7")
+theme_override_styles/slider = SubResource("StyleBoxLine_5o5nt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_443ij")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nd2ca")
+min_value = -45.0
+max_value = 0.0
+value = -20.0
+
+[node name="Label2" type="Label" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "music volume:"
+horizontal_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_7nc5b")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_ndeq7")
+theme_override_styles/slider = SubResource("StyleBoxLine_5o5nt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_443ij")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nd2ca")
+min_value = -45.0
+max_value = 0.0
+value = -20.0
+
+[node name="Spacer" type="Control" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+text = "fps: 60"
+horizontal_alignment = 1
+
+[node name="FPSSlider" type="HSlider" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_7nc5b")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_ndeq7")
+theme_override_styles/slider = SubResource("StyleBoxLine_5o5nt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_443ij")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nd2ca")
+max_value = 4.0
+
+[node name="Spacer2" type="Control" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_hover_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_focus_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("6_yqpnf")
+theme_override_icons/unchecked = ExtResource("7_7fj3x")
+text = "fullscreen"
+flat = true
+
+[node name="VSyncCheckBox" type="CheckBox" parent="UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_hover_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_focus_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/font_outline_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.945098, 0.952941, 1)
+theme_override_fonts/font = ExtResource("1_16r03")
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("6_yqpnf")
+theme_override_icons/unchecked = ExtResource("7_7fj3x")
+text = "vsync"
+flat = true
 
 [node name="SettingsBackButton" type="Button" parent="UI/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -962,7 +1092,6 @@ text = "ready"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_majfq")
-volume_db = -10.0
 bus = &"Music"
 
 [connection signal="pressed" from="UI/MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
@@ -979,6 +1108,11 @@ bus = &"Music"
 [connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
 [connection signal="text_changed" from="UI/Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
 [connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]
+[connection signal="value_changed" from="UI/Settings/VBoxContainer/VBoxContainer2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="UI/Settings/VBoxContainer/VBoxContainer2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="UI/Settings/VBoxContainer/VBoxContainer2/FPSSlider" to="." method="_on_fps_slider_value_changed"]
+[connection signal="toggled" from="UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="UI/Settings/VBoxContainer/VBoxContainer2/HBoxContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
 [connection signal="pressed" from="UI/Settings/VBoxContainer/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
 [connection signal="pressed" from="UI/Popups/Popup1/VBoxContainer/PopupCloseButton" to="." method="_on_popup_close_button_pressed"]
 [connection signal="timeout" from="LobbyPlayersGrid/Player/MoveTimer" to="LobbyPlayersGrid/Player" method="_on_move_timer_timeout"]

@@ -557,7 +557,6 @@ script = ExtResource("4_083j5")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gggvv")
-volume_db = -5.0
 bus = &"Music"
 
 [connection signal="pressed" from="UI/SelectMove/VBoxContainer/VBoxContainer/ConfirmMove/MoveConfirmButton" to="." method="_on_move_confirm_button_pressed"]

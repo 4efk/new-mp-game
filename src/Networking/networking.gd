@@ -1,8 +1,8 @@
 extends Node
 
-const ADVERTISE_LISTEN_PORT = 4243
-const ADVERTISE_BROADCAST_PORT = 4344
-const DEFAULT_GAME_PORT = 4242
+const ADVERTISE_LISTEN_PORT = 4443
+const ADVERTISE_BROADCAST_PORT = 4442
+const DEFAULT_GAME_PORT = 4441
 
 var broadcaster : PacketPeerUDP
 var listener : PacketPeerUDP
