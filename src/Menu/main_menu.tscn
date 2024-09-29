@@ -468,7 +468,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="QuitButton" type="Button" parent="UI/Settings/VBoxContainer"]
+[node name="SettingsBackButton" type="Button" parent="UI/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -979,6 +979,7 @@ bus = &"Music"
 [connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer/ChooseColorButton" to="." method="_on_choose_color_button_pressed"]
 [connection signal="text_changed" from="UI/Customize/VBoxContainer/HBoxContainer/CustomLetter" to="." method="_on_custom_letter_text_changed"]
 [connection signal="pressed" from="UI/Customize/VBoxContainer/HBoxContainer2/CBackButton" to="." method="_on_c_back_button_pressed"]
+[connection signal="pressed" from="UI/Settings/VBoxContainer/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
 [connection signal="pressed" from="UI/Popups/Popup1/VBoxContainer/PopupCloseButton" to="." method="_on_popup_close_button_pressed"]
 [connection signal="timeout" from="LobbyPlayersGrid/Player/MoveTimer" to="LobbyPlayersGrid/Player" method="_on_move_timer_timeout"]
 [connection signal="timeout" from="LobbyPlayersGrid/Player2/MoveTimer" to="LobbyPlayersGrid/Player2" method="_on_move_timer_timeout"]

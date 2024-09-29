@@ -22,6 +22,8 @@ var server_browser_server_button = preload("res://Menu/ServerBrowser/sb_server_b
 @onready var customize_ui_player: CharacterBody2D = $CustomizeUIPlayer
 @onready var customize_ui_custom_letter_lineedit: LineEdit = $UI/Customize/VBoxContainer/HBoxContainer/CustomLetter
 
+@onready var settings_ui: Control = $UI/Settings
+
 @onready var menu_music_player: AudioStreamPlayer = $MenuMusic
 
 var can_change_ready = true
@@ -114,7 +116,8 @@ func _on_customize_button_pressed() -> void:
 	main_menu.hide()
 	customize_ui.show()
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	main_menu.hide()
+	settings_ui.show()
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
@@ -173,6 +176,11 @@ func _on_custom_letter_text_changed(new_text: String) -> void:
 	customize_ui_player.get_node('CustomLetter').text = GlobalScript.settings['player_custom_letter']
 func _on_c_back_button_pressed() -> void:
 	customize_ui.hide()
+	main_menu.show()
+
+# settings
+func _on_settings_back_button_pressed() -> void:
+	settings_ui.hide()
 	main_menu.show()
 
 # popups stuff
