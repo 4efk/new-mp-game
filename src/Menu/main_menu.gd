@@ -84,6 +84,7 @@ func _process(delta: float) -> void:
 	for server_button in server_list.get_children():
 		if not server_button.name in available_servers_names_reformatted:
 			server_button.queue_free()
+		server_button.text = available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)] + ' - ' + str(Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)]][2]) + '/4 players'
 	
 	# lobby ui
 	players_grid.visible = lobby.visible
@@ -146,7 +147,7 @@ func _on_host_button_pressed() -> void:
 	lobby.show()
 func _on_direct_join_button_pressed() -> void:
 	if (ip_address_lineedit.text.is_valid_ip_address() or ip_address_lineedit.text == 'localhost') and port_lineedit.text:
-		Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))# Networking.DEFAULT_GAME_PORT)
+		Networking.create_client(ip_address_lineedit.text, int(port_lineedit.text))
 func _on_back_button_pressed() -> void:
 	main_menu.show()
 	host_join_browser.hide()
