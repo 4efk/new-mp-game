@@ -26,11 +26,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		settings['fullscreen'] = !settings['fullscreen']
-		DisplayServer.window_set_mode(4 * int(settings['fullscreen']))
+		DisplayServer.window_set_mode(4 * int(GlobalScript.settings['fullscreen']))
 		save_settings()
 
 func apply_settings():
-	DisplayServer.window_set_mode(4 * int(settings['fullscreen']))
+	DisplayServer.window_set_mode(4 * int(GlobalScript.settings['fullscreen']))
 	Engine.max_fps = GlobalScript.FPS_VALUES[GlobalScript.settings['fps']]
 	DisplayServer.window_set_vsync_mode(GlobalScript.settings['vsync'])
 	

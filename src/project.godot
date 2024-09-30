@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ascii tanks"
+config/version="1.0.0"
 run/main_scene="res://Menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60

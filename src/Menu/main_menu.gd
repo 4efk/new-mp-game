@@ -84,7 +84,8 @@ func _process(delta: float) -> void:
 	for server_button in server_list.get_children():
 		if not server_button.name in available_servers_names_reformatted:
 			server_button.queue_free()
-		server_button.text = available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)] + ' - ' + str(Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)]][2]) + '/4 players'
+		else:
+			server_button.text = available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)] + ' - ' + str(Networking.available_servers[available_servers_key_strings[available_servers_names_reformatted.find(server_button.name)]][2]) + '/4 players'
 	
 	# lobby ui
 	players_grid.visible = lobby.visible
