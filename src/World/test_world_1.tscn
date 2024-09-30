@@ -1,16 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://do6vtk84aidnw"]
+[gd_scene load_steps=6 format=3 uid="uid://do6vtk84aidnw"]
 
 [ext_resource type="Texture2D" uid="uid://swq3faty76gp" path="res://icon.svg" id="1_b71bh"]
 [ext_resource type="PackedScene" uid="uid://b2a4q5ysp3vgj" path="res://Player/player.tscn" id="1_swfj8"]
+[ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="3_s7d64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
+size = Vector2(136, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kol21"]
 size = Vector2(128, 254)
 
 [node name="TestWorld1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_swfj8")]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+modulate = Color(0.658824, 0.662745, 0.921569, 1)
+position = Vector2(332, 171)
+rotation = 0.731661
+motion_mode = 1
+
+[node name="MoveTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_dvtrj")
+
+[node name="LeftTrack" type="Label" parent="Player"]
+offset_left = -67.0
+offset_top = -50.0
+offset_right = 67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_s7d64")
+theme_override_font_sizes/font_size = 32
+text = "~-~-~-~"
+
+[node name="RightTrack" type="Label" parent="Player"]
+offset_left = -67.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_s7d64")
+theme_override_font_sizes/font_size = 32
+text = "~-~-~-~"
+
+[node name="Label3" type="Label" parent="Player"]
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 113.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_s7d64")
+theme_override_font_sizes/font_size = 32
+text = "IIIIIII"
+
+[node name="CustomLetter" type="Label" parent="Player"]
+offset_left = -54.0
+offset_top = -23.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_s7d64")
+theme_override_font_sizes/font_size = 32
+text = "a"
+
+[node name="BarrelEnd" type="Marker2D" parent="Player"]
+position = Vector2(120, 0)
+
+[node name="Player2" parent="." instance=ExtResource("1_swfj8")]
+modulate = Color(0.992157, 0.407843, 0.513726, 1)
+position = Vector2(968, 572)
+rotation = 3.0572
+script = null
+
+[node name="CustomLetter" parent="Player2" index="5"]
+text = "t"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(666, 188)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -19,3 +87,31 @@ shape = SubResource("RectangleShape2D_kol21")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 scale = Vector2(1, 2)
 texture = ExtResource("1_b71bh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.992157, 0.407843, 0.513726, 1)
+theme_override_fonts/font = ExtResource("3_s7d64")
+theme_override_font_sizes/font_size = 96
+text = "ascii tanks"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Player/MoveTimer" to="Player" method="_on_move_timer_timeout"]
+
+[editable path="Player2"]
