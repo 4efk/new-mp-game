@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://do6vtk84aidnw"]
+[gd_scene load_steps=7 format=3 uid="uid://do6vtk84aidnw"]
 
 [ext_resource type="Texture2D" uid="uid://swq3faty76gp" path="res://icon.svg" id="1_b71bh"]
 [ext_resource type="PackedScene" uid="uid://b2a4q5ysp3vgj" path="res://Player/player.tscn" id="1_swfj8"]
 [ext_resource type="FontFile" uid="uid://cx0pcfqcm8158" path="res://Fonts/NotoSansMono-Medium.ttf" id="3_s7d64"]
+[ext_resource type="PackedScene" uid="uid://uoogce5y3ln8" path="res://Player/bullet.tscn" id="4_5md76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvtrj"]
 size = Vector2(136, 64)
@@ -13,7 +14,7 @@ size = Vector2(128, 254)
 [node name="TestWorld1" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-modulate = Color(0.658824, 0.662745, 0.921569, 1)
+modulate = Color(0.521569, 0.854902, 0.8, 1)
 position = Vector2(332, 171)
 rotation = 0.731661
 motion_mode = 1
@@ -68,6 +69,13 @@ text = "a"
 [node name="BarrelEnd" type="Marker2D" parent="Player"]
 position = Vector2(120, 0)
 
+[node name="Bullet" parent="Player" instance=ExtResource("4_5md76")]
+position = Vector2(450, 0)
+script = null
+
+[node name="Letter" parent="Player/Bullet" index="0"]
+text = "a"
+
 [node name="Player2" parent="." instance=ExtResource("1_swfj8")]
 modulate = Color(0.992157, 0.407843, 0.513726, 1)
 position = Vector2(968, 572)
@@ -114,4 +122,5 @@ vertical_alignment = 1
 
 [connection signal="timeout" from="Player/MoveTimer" to="Player" method="_on_move_timer_timeout"]
 
+[editable path="Player/Bullet"]
 [editable path="Player2"]

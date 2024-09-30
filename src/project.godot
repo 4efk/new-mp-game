@@ -14,7 +14,7 @@ config/name="ascii tanks"
 run/main_scene="res://Menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://Textures/icon_1.png"
 
 [autoload]
 

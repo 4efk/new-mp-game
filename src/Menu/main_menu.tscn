@@ -109,6 +109,7 @@ text = "[play]"
 flat = true
 
 [node name="CustomizeButton" type="Button" parent="UI/MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -239,6 +240,7 @@ text = "[direct join]"
 flat = true
 
 [node name="HostButton" type="Button" parent="UI/HostJoinBrowser/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
